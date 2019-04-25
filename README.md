@@ -33,6 +33,7 @@ Summary
 - [The Picasso file structure](#the-picasso-file-structure)
 - [Example code](#example-code)
     - [File structure:](#file-structure)
+- [Related](#related)    
 - [History Log](#history-log)
 
 
@@ -175,6 +176,12 @@ zones:
 Note: the **widget** directory must be declared next to the file where the
 Widget class was declared (**index.php** in this very particular case).
 
+
+
+Related
+========
+
+- [Kit](https://github.com/lingtalfi/Kit): the widget rendering system 
 
 
 
