@@ -45,7 +45,8 @@ So, here is the configuration array for the picasso widget:
 
 ```yaml
 className: $theClassName        # for instance Ling\MyFirstPicassoWidget\MyFirstPicassoWidget 
-template: $templateName         # for instance: default.php, or prototype.php. This is the path to the template file, relative to the widget/templates directory next to the widget instance.
+?widgetDir: $widgetDir          # absolute path to the widget directory. If not set, the widget directory is a directory named "widget" found next to the file containing the widget class.
+template: $templateName         # for instance: default.php, or prototype.php. This is the path to the template file, relative to the $widgetDir/templates directory 
 ?attr:                          # An array of html attributes to add to the widget's outer tag
     id: my_id
     class: my_class my_class2
@@ -78,7 +79,7 @@ $kit->registerWidgetHandler('picasso', new PicassoWidgetHandler());
 The Picasso file structure
 ----------
 
-The Picasso file structure is contained in a directory named **widget**, which resides right next to the class file (the
+The Picasso file structure is contained in a **widget** directory, which by default is named **widget**, and resides right next to the class file (the
 file containing the class defined in the Picasso widget array via the **className** property).
 
 Here is the **widget** directory structure:
@@ -93,6 +94,9 @@ Here is the **widget** directory structure:
 ----- css/                  # this directory contains the css code blocks to add to the chosen template
 --------- default.css       # can be any name, but it's the same name as a template
 ```
+
+
+Note: the **widget** directory can be placed anywhere using the **widgetDir** directive of the widget configuration array.
 
 
 Notes:
@@ -186,7 +190,7 @@ zones:
 ```
 
 
-Note: the **widget** directory must be declared next to the file where the
+Note: the **widget** directory is (by default) declared next to the file where the
 Widget class was declared (**index.php** in this very particular case).
 
 
@@ -201,6 +205,10 @@ Related
 History Log
 =============
 
+- 1.4.0 -- 2019-04-30
+
+    - add the widgetDir directive to the widget configuration array
+    
 - 1.3.0 -- 2019-04-30
 
     - remove vars property from the widget configuration array

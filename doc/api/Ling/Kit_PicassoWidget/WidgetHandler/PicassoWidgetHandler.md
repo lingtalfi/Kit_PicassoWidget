@@ -19,18 +19,28 @@ The PicassoWidgetHandler class.
 This class can render a widget from a widgetConf array.
 A widgetConf array has the following structure:
 
+```yaml
 - className: string, the name of the widget class. Example: Ling\Kit_PicassoWidget\Widget\ExamplePicassoWidget
+- ?widgetDir: string, the absolute path to the widget directory. If not set, the widget directory is a directory named "widget" found next to the file containing the widget class.
 - template: string, the relative path of the template to use.
      A picasso widget always uses a template to displays itself.
-     The path is relative to the "widget/templates" directory next to the widget instance
-vars: array, an array of variables for the front widget to use
+     The path is relative to the "$widgetDir/templates" directory.
+- ?attr: an array of html attributes to add on the widget's outer tag. Example:
+     - id: my_id
+     - class: my_class my_class2
+     - data-example-value: 668
+```
+
 
 
 
 The widget directory
 ---------------
 
-With the Picasso system, there is always a widget directory next to the Picasso widget class.
+With the Picasso system, we use a widget directory.
+By default, the widget directory is next to the Picasso widget class file.
+It can be changed using the **widgetDir** property of the widget configuration array.
+
 This directory has the following structure:
 
 

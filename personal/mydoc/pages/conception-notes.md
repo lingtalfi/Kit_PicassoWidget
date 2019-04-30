@@ -24,7 +24,8 @@ Now if you want to use the Picasso system, you're welcome.
 
 The picasso system basically uses a php class and a file structure convention.
 
-The php class must extend the PicassoWidget class, and must contain a widget directory right next to the php class, with the following structure:
+The php class must extend the PicassoWidget class, and provide a "widget" directory, which by default is named "widget"
+and is located right next to the php class, with the following structure:
 
 
 ```txt
@@ -37,6 +38,12 @@ The php class must extend the PicassoWidget class, and must contain a widget dir
 ----- css/                  # this directory contains the css code blocks to add to the chosen template
 --------- default.css       # can be any name, but it's the same name as a template
 ```
+
+
+Note: the widget directory could also be placed elsewhere, which would be useful in a plugin oriented application, so
+that the plugins can copy the **widget** dir in the application scope, so that the maintainer of the app can modify those
+files by hand without having to modify the plugin itself (for instance).
+
 
 
 So the main ideas here are:
