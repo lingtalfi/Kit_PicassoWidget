@@ -48,7 +48,9 @@ className: $theClassName        # for instance Ling\MyFirstPicassoWidget\MyFirst
 ?widgetDir: $widgetDir          # absolute path to the widget directory. If not set, the widget directory is a directory named "widget" found next to the file containing the widget class.
                                 # If set, and the path is relative (i.e. not starting with a slash),
                                 # then the path is relative to the widgetBaseDir (set using the setWidgetBaseDir method of the PicassoWidgetHandler class)
-template: $templateName         # for instance: default.php, or prototype.php. This is the path to the template file, relative to the $widgetDir/templates directory 
+template: $templateName         # for instance: default.php, or prototype.php. This is the path to the template file, relative to the $widgetDir/templates directory
+?vars:                          # An array of variables to pass to the template
+    my_value: 667 
 ?attr:                          # An array of html attributes to add to the widget's outer tag
     id: my_id
     class: my_class my_class2
@@ -163,6 +165,8 @@ zones:
             active: true
             className: ZeroWidget
             template: default.php
+            ?vars:  
+                my_value: 668
             ?attr:
                 id: my_id
                 class: my_class my_class2
@@ -207,6 +211,11 @@ Related
 History Log
 =============
 
+- 1.6.0 -- 2019-04-30
+
+    - add WidgetConfAwarePicassoWidgetInterface interface
+    - reintroducting the vars property into the widget configuration array
+    
 - 1.5.0 -- 2019-04-30
 
     - add the widget base dir concept (and implementation)

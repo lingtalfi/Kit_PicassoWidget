@@ -127,7 +127,9 @@ className: $theClassName        # for instance Ling\MyFirstPicassoWidget\MyFirst
 ?widgetDir: $widgetDir          # absolute path to the widget directory. If not set, the widget directory is a directory named "widget" found next to the file containing the widget class.
                                 # If set, and the path is relative (i.e. not starting with a slash),
                                 # then the path is relative to the widgetBaseDir (set using the setWidgetBaseDir method of the PicassoWidgetHandler class)
-template: $templateName         # for instance: default.php, or prototype.php. This is the path to the template file, relative to the $widgetDir/templates directory 
+template: $templateName         # for instance: default.php, or prototype.php. This is the path to the template file, relative to the $widgetDir/templates directory
+?vars:                          # An array of variables to pass to the template
+    my_value: 667  
 ?attr:                          # An array of html attributes to add to the widget's outer tag
     id: my_id
     class: my_class my_class2
@@ -148,8 +150,7 @@ Actually you know what, I won't include it in Kit, because Kit is already comple
 
 
 
-2019-04-30: I've just added the attr property. I believe it should not be included in the (front) vars. Actually, 
-I'm not even sure if having vars is a good idea, but let's keep it for now...
+2019-04-30: I've just added the attr property. I believe it should not be included in the (front) vars. 
 
 attr is more a cosmetic thing, and hence it's part of the widget root configuration properties.
 The attr parameter was originally implemented to facilitate the implementation of the website-builder system, as
