@@ -46,6 +46,8 @@ So, here is the configuration array for the picasso widget:
 ```yaml
 className: $theClassName        # for instance Ling\MyFirstPicassoWidget\MyFirstPicassoWidget 
 ?widgetDir: $widgetDir          # absolute path to the widget directory. If not set, the widget directory is a directory named "widget" found next to the file containing the widget class.
+                                # If set, and the path is relative (i.e. not starting with a slash),
+                                # then the path is relative to the widgetBaseDir (set using the setWidgetBaseDir method of the PicassoWidgetHandler class)
 template: $templateName         # for instance: default.php, or prototype.php. This is the path to the template file, relative to the $widgetDir/templates directory 
 ?attr:                          # An array of html attributes to add to the widget's outer tag
     id: my_id
@@ -205,6 +207,10 @@ Related
 History Log
 =============
 
+- 1.5.0 -- 2019-04-30
+
+    - add the widget base dir concept (and implementation)
+    
 - 1.4.0 -- 2019-04-30
 
     - add the widgetDir directive to the widget configuration array

@@ -17,7 +17,9 @@ use Ling\Kit_PicassoWidget\Widget\PicassoWidget;
  *
  * ```yaml
  * - className: string, the name of the widget class. Example: Ling\Kit_PicassoWidget\Widget\ExamplePicassoWidget
- * - ?widgetDir: string, the absolute path to the widget directory. If not set, the widget directory is a directory named "widget" found next to the file containing the widget class.
+ * - ?widgetDir: string, the path to the widget directory. If not set, the widget directory is a directory named "widget" found next to the file containing the widget class.
+ *              If set, and the path is relative (i.e. not starting with a slash),
+ *              then the path is relative to the widgetBaseDir (set using the setWidgetBaseDir method of this class)
  * - template: string, the relative path of the template to use.
  *      A picasso widget always uses a template to displays itself.
  *      The path is relative to the "$widgetDir/templates" directory.
@@ -71,6 +73,37 @@ class PicassoWidgetHandler implements WidgetHandlerInterface
 
 
     /**
+     * This property holds the widgetBaseDir for this instance.
+     * This is the absolute path to the widget base directory,
+     * which is used when the widgetConf specifies a relative widgetDir property.
+     * See more information in the class description.
+     *
+     *
+     * @var string
+     */
+    protected $widgetBaseDir;
+
+
+    /**
+     * Builds the PicassoWidgetHandler instance.
+     */
+    public function __construct()
+    {
+        $this->widgetBaseDir = "";
+    }
+
+    /**
+     * Sets the widgetBaseDir.
+     *
+     * @param string $widgetBaseDir
+     */
+    public function setWidgetBaseDir(string $widgetBaseDir)
+    {
+        $this->widgetBaseDir = $widgetBaseDir;
+    }
+
+
+    /**
      * @implementation
      */
     public function handle(array $widgetConf, HtmlPageCopilot $copilot, array $debug): string
@@ -89,10 +122,13 @@ class PicassoWidgetHandler implements WidgetHandlerInterface
 
 
                         //--------------------------------------------
-                        // FINDING WIDGET DIR
+                        // FINDING THE WIDGET DIR
                         //--------------------------------------------
                         if (array_key_exists("widgetDir", $widgetConf)) {
                             $widgetDir = $widgetConf['widgetDir'];
+                            if ('/' !== substr($widgetDir, 0, 1)) {
+                                $widgetDir = $this->widgetBaseDir . "/" . $widgetDir;
+                            }
                         } else {
                             $file = $class->getFileName();
                             $dir = dirname($file);

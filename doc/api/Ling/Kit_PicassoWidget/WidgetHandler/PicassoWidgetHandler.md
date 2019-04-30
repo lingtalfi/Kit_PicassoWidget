@@ -21,7 +21,9 @@ A widgetConf array has the following structure:
 
 ```yaml
 - className: string, the name of the widget class. Example: Ling\Kit_PicassoWidget\Widget\ExamplePicassoWidget
-- ?widgetDir: string, the absolute path to the widget directory. If not set, the widget directory is a directory named "widget" found next to the file containing the widget class.
+- ?widgetDir: string, the path to the widget directory. If not set, the widget directory is a directory named "widget" found next to the file containing the widget class.
+             If set, and the path is relative (i.e. not starting with a slash),
+             then the path is relative to the widgetBaseDir (set using the setWidgetBaseDir method of this class)
 - template: string, the relative path of the template to use.
      A picasso widget always uses a template to displays itself.
      The path is relative to the "$widgetDir/templates" directory.
@@ -73,7 +75,12 @@ Class synopsis
 
 class <span class="pl-k">PicassoWidgetHandler</span> implements [WidgetHandlerInterface](https://github.com/lingtalfi/Kit/blob/master/doc/api/Ling/Kit/WidgetHandler/WidgetHandlerInterface.md) {
 
+- Properties
+    - protected string [$widgetBaseDir](#property-widgetBaseDir) ;
+
 - Methods
+    - public [__construct](https://github.com/lingtalfi/Kit_PicassoWidget/blob/master/doc/api/Ling/Kit_PicassoWidget/WidgetHandler/PicassoWidgetHandler/__construct.md)() : void
+    - public [setWidgetBaseDir](https://github.com/lingtalfi/Kit_PicassoWidget/blob/master/doc/api/Ling/Kit_PicassoWidget/WidgetHandler/PicassoWidgetHandler/setWidgetBaseDir.md)(string $widgetBaseDir) : void
     - public [handle](https://github.com/lingtalfi/Kit_PicassoWidget/blob/master/doc/api/Ling/Kit_PicassoWidget/WidgetHandler/PicassoWidgetHandler/handle.md)(array $widgetConf, Ling\HtmlPageTools\Copilot\HtmlPageCopilot $copilot, array $debug) : string
     - protected [error](https://github.com/lingtalfi/Kit_PicassoWidget/blob/master/doc/api/Ling/Kit_PicassoWidget/WidgetHandler/PicassoWidgetHandler/error.md)(string $msg, array $widgetConf, array $debug) : void
 
@@ -82,11 +89,25 @@ class <span class="pl-k">PicassoWidgetHandler</span> implements [WidgetHandlerIn
 
 
 
+Properties
+=============
+
+- <span id="property-widgetBaseDir"><b>widgetBaseDir</b></span>
+
+    This property holds the widgetBaseDir for this instance.
+    This is the absolute path to the widget base directory,
+    which is used when the widgetConf specifies a relative widgetDir property.
+    See more information in the class description.
+    
+    
+
 
 
 Methods
 ==============
 
+- [PicassoWidgetHandler::__construct](https://github.com/lingtalfi/Kit_PicassoWidget/blob/master/doc/api/Ling/Kit_PicassoWidget/WidgetHandler/PicassoWidgetHandler/__construct.md) &ndash; Builds the PicassoWidgetHandler instance.
+- [PicassoWidgetHandler::setWidgetBaseDir](https://github.com/lingtalfi/Kit_PicassoWidget/blob/master/doc/api/Ling/Kit_PicassoWidget/WidgetHandler/PicassoWidgetHandler/setWidgetBaseDir.md) &ndash; Sets the widgetBaseDir.
 - [PicassoWidgetHandler::handle](https://github.com/lingtalfi/Kit_PicassoWidget/blob/master/doc/api/Ling/Kit_PicassoWidget/WidgetHandler/PicassoWidgetHandler/handle.md) &ndash; Returns the html code of the widget, according to the widget configuration.
 - [PicassoWidgetHandler::error](https://github.com/lingtalfi/Kit_PicassoWidget/blob/master/doc/api/Ling/Kit_PicassoWidget/WidgetHandler/PicassoWidgetHandler/error.md) &ndash; Throws an useful error message.
 
