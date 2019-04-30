@@ -118,7 +118,7 @@ So, here is the configuration array for the picasso widget:
 ```yaml
 className: $theClassName        # for instance Ling\MyFirstPicassoWidget\MyFirstPicassoWidget 
 template: $templateName         # for instance: default.php, or prototype.php. This is the path to the template file, relative to the widget/templates directory next to the widget instance.
-vars: array                     # An array of variables for the front widget to use
+#vars: array                     # An array of variables for the front widget to use, I removed this feature: non relevant... doesn't achieve anything...
 ?attr:                          # An array of html attributes to add to the widget's outer tag
     id: my_id
     class: my_class my_class2

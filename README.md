@@ -50,7 +50,6 @@ template: $templateName         # for instance: default.php, or prototype.php. T
     id: my_id
     class: my_class my_class2
     data-example-value: 668
-?vars: array                    # An array of variables for the front widget to use
 
 ``` 
 
@@ -202,6 +201,10 @@ Related
 History Log
 =============
 
+- 1.3.0 -- 2019-04-30
+
+    - remove vars property from the widget configuration array
+    
 - 1.2.0 -- 2019-04-30
 
     - add attr property to the widget configuration array
