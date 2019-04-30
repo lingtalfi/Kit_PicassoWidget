@@ -46,7 +46,12 @@ So, here is the configuration array for the picasso widget:
 ```yaml
 className: $theClassName        # for instance Ling\MyFirstPicassoWidget\MyFirstPicassoWidget 
 template: $templateName         # for instance: default.php, or prototype.php. This is the path to the template file, relative to the widget/templates directory next to the widget instance.
-vars: array                     # An array of variables for the front widget to use
+?attr:                          # An array of html attributes to add to the widget's outer tag
+    id: my_id
+    class: my_class my_class2
+    data-example-value: 668
+?vars: array                    # An array of variables for the front widget to use
+
 ``` 
 
 
@@ -153,6 +158,11 @@ zones:
             active: true
             className: ZeroWidget
             template: default.php
+            ?attr:
+                id: my_id
+                class: my_class my_class2
+                data-example-value: 668
+                
 ```
 
 
@@ -192,6 +202,10 @@ Related
 History Log
 =============
 
+- 1.2.0 -- 2019-04-30
+
+    - add attr property to the widget configuration array
+    
 - 1.1.0 -- 2019-04-29
 
     - update PicassoWidgetHandler, now handles css code blocks

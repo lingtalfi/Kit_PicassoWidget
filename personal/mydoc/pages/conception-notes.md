@@ -119,6 +119,11 @@ So, here is the configuration array for the picasso widget:
 className: $theClassName        # for instance Ling\MyFirstPicassoWidget\MyFirstPicassoWidget 
 template: $templateName         # for instance: default.php, or prototype.php. This is the path to the template file, relative to the widget/templates directory next to the widget instance.
 vars: array                     # An array of variables for the front widget to use
+?attr:                          # An array of html attributes to add to the widget's outer tag
+    id: my_id
+    class: my_class my_class2
+    data-example-value: 668
+
 ``` 
 
 
@@ -132,5 +137,13 @@ Now since Picasso is the first widget system, I believe I will include it with K
 fetch for a Picasso planet when she doesn't even know about kit (hopefully this is not a design flaw right there).
 Actually you know what, I won't include it in Kit, because Kit is already complex enough by itself.
 
+
+
+2019-04-30: I've just added the attr property. I believe it should not be included in the (front) vars. Actually, 
+I'm not even sure if having vars is a good idea, but let's keep it for now...
+
+attr is more a cosmetic thing, and hence it's part of the widget root configuration properties.
+The attr parameter was originally implemented to facilitate the implementation of the website-builder system, as
+described in my [conception notes](https://github.com/lingtalfi/Light_Kit_WebsiteBuilder/blob/master/doc/pages/conception-notes.md).
 
 
