@@ -309,7 +309,7 @@ class VariableDescriptionDocWriterUtil
             foreach ($imgPaths as $imgPath) {
                 $name = basename($imgPath);
                 $url = $this->imgBaseUrl . "/$widgetName/" . $imgPath;
-                $s .= "- ![Screenshot $name]($url)" . PHP_EOL;
+                $s .= "![Screenshot $name]($url)" . PHP_EOL . PHP_EOL;
             }
         }
         return $s;

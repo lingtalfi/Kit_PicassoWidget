@@ -49,6 +49,11 @@ className: $theClassName        # for instance Ling\MyFirstPicassoWidget\MyFirst
                                 # If set, and the path is relative (i.e. not starting with a slash),
                                 # then the path is relative to the widgetBaseDir (set using the setWidgetBaseDir method of the PicassoWidgetHandler class)
 template: $templateName         # for instance: default.php, or prototype.php. This is the path to the template file, relative to the $widgetDir/templates directory
+# The css skin to use. 
+# If the skin property doesn't exist, it defaults to the template name. 
+# If it's defined, it indicates which skin to use.
+# If null, this means use no skin at all (the user probably wants to take care of the css by herself)
+?skin: null  
 ?vars:                          # An array of variables to pass to the template
     my_value: 667 
 ?attr:                          # An array of html attributes to add to the widget's outer tag
@@ -165,6 +170,7 @@ zones:
             active: true
             className: ZeroWidget
             template: default.php
+            ?skin: null
             ?vars:  
                 my_value: 668
             ?attr:
@@ -211,6 +217,10 @@ Related
 History Log
 =============
 
+- 1.8.0 -- 2019-05-02
+
+    - add the skin concept (and implementation)
+    
 - 1.7.0 -- 2019-05-02
 
     - add VariableDescriptionDocWriterUtil

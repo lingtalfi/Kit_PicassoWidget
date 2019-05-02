@@ -169,10 +169,12 @@ class PicassoWidgetHandler implements WidgetHandlerInterface
                             }
 
 
+                            $templateName = explode(".", $templateFileName)[0];
+
+
                             //--------------------------------------------
                             // REGISTERING JS INIT CODE BLOCKS
                             //--------------------------------------------
-                            $templateName = explode(".", $templateFileName)[0];
                             $jsInitFile = $widgetDir . "/js-init/$templateName.js";
                             if (file_exists($jsInitFile)) {
                                 $codeBlock = file_get_contents($jsInitFile);
@@ -183,10 +185,17 @@ class PicassoWidgetHandler implements WidgetHandlerInterface
                             //--------------------------------------------
                             // REGISTERING CSS CODE BLOCKS
                             //--------------------------------------------
-                            $cssCodeBlockFile = $widgetDir . "/css/$templateName.css";
-                            if (file_exists($cssCodeBlockFile)) {
-                                $codeBlock = file_get_contents($cssCodeBlockFile);
-                                $copilot->addCssCodeBlock($codeBlock);
+                            if (array_key_exists("skin", $widgetConf)) {
+                                $skin = $widgetConf['skin'];
+                            } else {
+                                $skin = $templateName;
+                            }
+                            if (null !== $skin) {
+                                $cssCodeBlockFile = $widgetDir . "/css/$skin.css";
+                                if (file_exists($cssCodeBlockFile)) {
+                                    $codeBlock = file_get_contents($cssCodeBlockFile);
+                                    $copilot->addCssCodeBlock($codeBlock);
+                                }
                             }
 
 

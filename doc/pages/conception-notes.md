@@ -11,6 +11,7 @@ Conception notes
     * [Using css decorator files](#using-css-decorator-files)
     * [The picasso widget configuration array](#the-picasso-widget-configuration-array)
 * [The variables description idea](#the-variables-description-idea)
+* [The css skin idea](#the-css-skin-idea)
 
 
 
@@ -129,6 +130,12 @@ className: $theClassName        # for instance Ling\MyFirstPicassoWidget\MyFirst
                                 # If set, and the path is relative (i.e. not starting with a slash),
                                 # then the path is relative to the widgetBaseDir (set using the setWidgetBaseDir method of the PicassoWidgetHandler class)
 template: $templateName         # for instance: default.php, or prototype.php. This is the path to the template file, relative to the $widgetDir/templates directory
+
+# The css skin to use. 
+# If the skin property doesn't exist, it defaults to the template name. 
+# If it's defined, it indicates which skin to use.
+# If null, this means use no skin at all (the user probably wants to take care of the css by herself)
+?skin: null                         
 ?vars:                          # An array of variables to pass to the template
     my_value: 667  
 ?attr:                          # An array of html attributes to add to the widget's outer tag
@@ -193,6 +200,25 @@ What's the purpose of that file:
 
 
 This discussion led to the official [widget variables description page](https://github.com/lingtalfi/Kit_PicassoWidget/blob/master/doc/pages/widget-variables-description.md).
+
+
+
+The css skin idea
+------------
+2019-05-02
+
+
+The idea behind a css skin is that for a given template, we can choose from different stylesheets.
+
+Each stylesheet is called a skin.
+
+By default, the skin used is the skin which has the same name as the template (if such a skin exists).
+
+Skins are located under the **$widgetDir/css** directory.
+
+
+Sometimes, the user prefers to not use any css skin, for instance because she uses a general stylesheet coding for the whole theme
+(including all pages and widgets). In that case, she can just set the skin to null, to disable it.
 
 
 
