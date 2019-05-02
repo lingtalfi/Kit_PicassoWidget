@@ -56,10 +56,10 @@ template: $templateName         # for instance: default.php, or prototype.php. T
 ?skin: null  
 ?vars:                          # An array of variables to pass to the template
     my_value: 667 
-?attr:                          # An array of html attributes to add to the widget's outer tag
-    id: my_id
-    class: my_class my_class2
-    data-example-value: 668
+    ?attr:                          # An array of html attributes to add to the widget's outer tag
+        id: my_id
+        class: my_class my_class2
+        data-example-value: 668
 
 ``` 
 
@@ -173,10 +173,10 @@ zones:
             ?skin: null
             ?vars:  
                 my_value: 668
-            ?attr:
-                id: my_id
-                class: my_class my_class2
-                data-example-value: 668
+                ?attr:
+                    id: my_id
+                    class: my_class my_class2
+                    data-example-value: 668
                 
 ```
 
@@ -217,6 +217,10 @@ Related
 History Log
 =============
 
+- 1.9.0 -- 2019-05-02
+
+    - update widget configuration array: attr is now part of the vars
+    
 - 1.8.0 -- 2019-05-02
 
     - add the skin concept (and implementation)

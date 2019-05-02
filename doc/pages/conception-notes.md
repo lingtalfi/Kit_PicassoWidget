@@ -138,10 +138,10 @@ template: $templateName         # for instance: default.php, or prototype.php. T
 ?skin: null                         
 ?vars:                          # An array of variables to pass to the template
     my_value: 667  
-?attr:                          # An array of html attributes to add to the widget's outer tag
-    id: my_id
-    class: my_class my_class2
-    data-example-value: 668
+    ?attr:                          # An array of html attributes to add to the widget's outer tag
+        id: my_id
+        class: my_class my_class2
+        data-example-value: 668
 
 ``` 
 
