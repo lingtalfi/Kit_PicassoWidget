@@ -10,6 +10,7 @@ Conception notes
     * [Using js-init files](#using-js-init-files)
     * [Using css decorator files](#using-css-decorator-files)
     * [The picasso widget configuration array](#the-picasso-widget-configuration-array)
+* [The variables description idea](#the-variables-description-idea)
 
 
 
@@ -155,5 +156,57 @@ Actually you know what, I won't include it in Kit, because Kit is already comple
 attr is more a cosmetic thing, and hence it's part of the widget root configuration properties.
 The attr parameter was originally implemented to facilitate the implementation of the website-builder system, as
 described in my [conception notes](https://github.com/lingtalfi/Light_Kit_WebsiteBuilder/blob/master/doc/pages/conception-notes.md).
+
+
+
+
+The variables description idea
+----------------
+2019-04-30
+
+I was creating my first Picasso widget for the Light_Kit_BootstrapWidgetLibrary (MainNavWidget), and I thought
+about this idea of creating a variable description file, which would basically be a file describing the vars of the widget
+(accessible via the vars property of [the widget configuration array](https://github.com/lingtalfi/Kit_PicassoWidget#the-picasso-widget-array)).
+
+The file looks like this:
+
+
+```yaml
+
+```
+
+What's the purpose of that file:
+
+- first, I thought that I could use it as a documentation for myself (like a memory), since the file has a structure, it's a first step towards
+    a minimum level of consistency throughout all the widgets I will every build
+- then expanding on this idea, I thought that I could use it to generate the documentation (using my doc builder tools in the LingTalfi planet...),
+    which would concretely make all the widget documentation consistent all the sudden.
+- also, I thought that I could generate some admin files: I plan to create an admin website for my kit based apps, like a wordpress backend,
+        and so I anticipated that this admin would work based on some files describing the types of gui necessary to update the vars,
+        basically those files would be used to generate the admin forms for each widget,
+        and so with those var description files, I could generate a sort of blue print (yet to be completed manually), to save a lot of time too.
+        Note: I'm not 100% sure how the admin would work though, that's just a speculation at the moment, but I still consider this as an argument
+        as to justify the creation of those variable description files.
+             
+              
+     
+
+
+This discussion led to the official [widget variables description page](https://github.com/lingtalfi/Kit_PicassoWidget/blob/master/doc/pages/widget-variables-description.md).
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 

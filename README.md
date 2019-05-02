@@ -211,6 +211,10 @@ Related
 History Log
 =============
 
+- 1.7.0 -- 2019-05-02
+
+    - add VariableDescriptionDocWriterUtil
+    
 - 1.6.0 -- 2019-04-30
 
     - add WidgetConfAwarePicassoWidgetInterface interface
