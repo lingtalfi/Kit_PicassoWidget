@@ -217,6 +217,10 @@ Related
 History Log
 =============
 
+- 1.10.0 -- 2019-05-02
+
+    - update PicassoWidgetHandler: add constructor option $showCssNuggetHeaders
+    
 - 1.9.0 -- 2019-05-02
 
     - update widget configuration array: attr is now part of the vars

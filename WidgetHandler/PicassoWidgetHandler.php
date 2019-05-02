@@ -83,13 +83,26 @@ class PicassoWidgetHandler implements WidgetHandlerInterface
      */
     protected $widgetBaseDir;
 
+    /**
+     * This property holds the showCssNuggetHeaders for this instance.
+     * Whether or not to show some headers along with the css nuggets (aka css code blocks).
+     * This might be useful for debugging, if you print all your nuggets in a compiled file,
+     * to better spot the provenance for each nugget.
+     *
+     *
+     * @var bool = false
+     */
+    protected $showCssNuggetHeaders;
+
 
     /**
      * Builds the PicassoWidgetHandler instance.
+     * @param array $options
      */
-    public function __construct()
+    public function __construct(array $options = [])
     {
         $this->widgetBaseDir = "";
+        $this->showCssNuggetHeaders = $options['showCssNuggetHeaders'] ?? false;
     }
 
     /**
@@ -194,6 +207,10 @@ class PicassoWidgetHandler implements WidgetHandlerInterface
                                 $cssCodeBlockFile = $widgetDir . "/css/$skin.css";
                                 if (file_exists($cssCodeBlockFile)) {
                                     $codeBlock = file_get_contents($cssCodeBlockFile);
+
+                                    if (true === $this->showCssNuggetHeaders) {
+                                        $codeBlock = "/** $className */" . PHP_EOL . $codeBlock;
+                                    }
                                     $copilot->addCssCodeBlock($codeBlock);
                                 }
                             }
