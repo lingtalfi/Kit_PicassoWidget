@@ -107,6 +107,11 @@ class VariableDescriptionFileGeneratorUtil
         $type = "string";
         $defaultValue = $value;
         $description = "todo: here";
+
+        if (1 === $indentBase && "attr" === $varName) {
+            $description = "The attributes to add to the widget's container tag.";
+        }
+
         $example = null;
         $itemProperties = null;
         $properties = null;
@@ -158,7 +163,7 @@ class VariableDescriptionFileGeneratorUtil
 
 
         $indent0 = str_repeat(" ", ($indentBase) * 4);
-        $indent = str_repeat(" ", ($indentBase+1) * 4);
+        $indent = str_repeat(" ", ($indentBase + 1) * 4);
 
 
         $s .= $indent0 . $varName . ":" . PHP_EOL;

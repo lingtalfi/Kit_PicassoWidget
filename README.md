@@ -219,6 +219,10 @@ Related
 History Log
 =============
 
+- 1.13.0 -- 2019-05-03
+
+    - update VariableDescriptionFileGeneratorUtil, now adds a specific description for attr variable.
+    
 - 1.12.0 -- 2019-05-03
 
     - add VariableDescriptionFileGeneratorUtil
