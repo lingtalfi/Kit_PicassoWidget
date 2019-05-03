@@ -284,6 +284,10 @@ Related
 History Log
 =============
 
+- 1.15.0 -- 2019-05-03
+
+    - update VariableDescriptionDocWriterUtil now lists the skins and templates
+    
 - 1.14.1 -- 2019-05-03
 
     - update documentation
