@@ -100,8 +100,10 @@ Here is the **widget** directory structure:
 --------- default.php       # just an example, can be any name really...
 ----- js-init/
 --------- default.js        # can be any name, but it's the same name as a template
+--------- default.js.php    # use this instead of default.js to turn the file into a dynamic js nugget
 ----- css/                  # this directory contains the css code blocks to add to the chosen template
 --------- default.css       # can be any name, but it's the same name as a template
+--------- default.css.php   # use this instead of default.css to turn the file into a dynamic css nugget
 ```
 
 
@@ -111,9 +113,9 @@ Note: the **widget** directory can be placed anywhere using the **widgetDir** di
 Notes:
 - because of this design, a planet can provide multiple Picasso widgets.
 - the **js-init** directory contains any [js code block](https://github.com/lingtalfi/HtmlPageTools/blob/master/doc/api/Ling/HtmlPageTools/Copilot/HtmlPageCopilot.md#property-jsCodeBlocks) that you want to inject in your html page.
-- the files contained in the **js-init** directory must have the same name than the template being used (with the **.js** extension instead).
+- the files contained in the **js-init** directory must have the same name than the template being used (with the **.js** or **.js.php** extension instead). If the **.js.php** extension is used, it's [dynamic nugget](https://github.com/lingtalfi/Kit_PicassoWidget/blob/master/doc/pages/conception-notes.md#dynamic-nuggets).
 - the **css** directory contains any [css code block](https://github.com/lingtalfi/HtmlPageTools/blob/master/doc/api/Ling/HtmlPageTools/Copilot/HtmlPageCopilot.md#property-cssCodeBlocks) that you want to inject in an external css stylesheet.
-- the files contained in the **css** directory must have the same name than the template being used (with the **.css** extension instead).
+- the files contained in the **css** directory must have the same name than the template being used (with the **.css** or **.css.php** extension instead). If the **.css.php** extension is used, it's [dynamic nugget](https://github.com/lingtalfi/Kit_PicassoWidget/blob/master/doc/pages/conception-notes.md#dynamic-nuggets).
 
 
 
@@ -217,6 +219,11 @@ Related
 History Log
 =============
 
+- 1.11.0 -- 2019-05-03
+
+    - update PicassoWidgetHandler: now handles dynamic nuggets
+    - update PicassoWidgetHandler: add constructor option $showJsNuggetHeaders
+    
 - 1.10.0 -- 2019-05-02
 
     - update PicassoWidgetHandler: add constructor option $showCssNuggetHeaders

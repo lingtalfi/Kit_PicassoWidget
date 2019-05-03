@@ -4,7 +4,7 @@
 
 The PicassoWidgetHandler class
 ================
-2019-04-24 --> 2019-05-02
+2019-04-24 --> 2019-05-03
 
 
 
@@ -78,6 +78,7 @@ class <span class="pl-k">PicassoWidgetHandler</span> implements [WidgetHandlerIn
 - Properties
     - protected string [$widgetBaseDir](#property-widgetBaseDir) ;
     - protected bool [$showCssNuggetHeaders](#property-showCssNuggetHeaders) ;
+    - protected bool [$showJsNuggetHeaders](#property-showJsNuggetHeaders) ;
 
 - Methods
     - public [__construct](https://github.com/lingtalfi/Kit_PicassoWidget/blob/master/doc/api/Ling/Kit_PicassoWidget/WidgetHandler/PicassoWidgetHandler/__construct.md)(array $options = []) : void
@@ -108,6 +109,15 @@ Properties
     Whether or not to show some headers along with the css nuggets (aka css code blocks).
     This might be useful for debugging, if you print all your nuggets in a compiled file,
     to better spot the provenance for each nugget.
+    
+    
+
+- <span id="property-showJsNuggetHeaders"><b>showJsNuggetHeaders</b></span>
+
+    This property holds the showJsNuggetHeaders for this instance.
+    Whether or not to show some headers along with the js nuggets (aka js init code blocks).
+    
+    This might be useful for debugging.
     
     
 
