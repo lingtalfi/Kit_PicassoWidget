@@ -219,6 +219,10 @@ Related
 History Log
 =============
 
+- 1.12.0 -- 2019-05-03
+
+    - add VariableDescriptionFileGeneratorUtil
+    
 - 1.11.0 -- 2019-05-03
 
     - update PicassoWidgetHandler: now handles dynamic nuggets
