@@ -4,6 +4,7 @@ namespace Ling\Kit_PicassoWidget\Widget;
 
 
 use Ling\Bat\StringTool;
+use Ling\HtmlPageTools\Copilot\HtmlPageCopilot;
 use Ling\ZephyrTemplateEngine\ZephyrTemplateEngine;
 
 /**
@@ -44,7 +45,6 @@ class PicassoWidget extends ZephyrTemplateEngine
     protected $attr;
 
 
-
     /**
      * Builds the PicassoWidget instance.
      */
@@ -76,6 +76,26 @@ class PicassoWidget extends ZephyrTemplateEngine
         return parent::renderFile($filePath, $variables);
     }
 
+
+    //--------------------------------------------
+    //
+    //--------------------------------------------
+    /**
+     * Prepares the widget according to the given widget configuration.
+     *
+     * Sometimes, you want the user (via the widget conf) to be able to activate
+     * or de-activate some js features. This is the original use case why this
+     * method was created.
+     *
+     *
+     * @param array $widgetConf
+     * @param HtmlPageCopilot $copilot
+     * @overrideMe
+     */
+    public function prepare(array $widgetConf, HtmlPageCopilot $copilot)
+    {
+
+    }
 
 
     //--------------------------------------------

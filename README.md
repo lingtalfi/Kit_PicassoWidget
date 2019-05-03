@@ -284,6 +284,10 @@ Related
 History Log
 =============
 
+- 1.16.0 -- 2019-05-03
+
+    - add the PicassoWidget->prepare method 
+    
 - 1.15.0 -- 2019-05-03
 
     - update VariableDescriptionDocWriterUtil now lists the skins and templates

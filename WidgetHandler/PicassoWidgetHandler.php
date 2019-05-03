@@ -145,6 +145,12 @@ class PicassoWidgetHandler implements WidgetHandlerInterface
 
 
                         //--------------------------------------------
+                        // PREPARE THE WIDGET
+                        //--------------------------------------------
+                        $instance->prepare($widgetConf, $copilot);
+
+
+                        //--------------------------------------------
                         // FINDING THE WIDGET DIR
                         //--------------------------------------------
                         if (array_key_exists("widgetDir", $widgetConf)) {
