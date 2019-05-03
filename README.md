@@ -33,6 +33,7 @@ Summary
 - [The Picasso file structure](#the-picasso-file-structure)
 - [Example code](#example-code)
     - [File structure:](#file-structure)
+- [A concrete skin example](#the-picasso-file-structure)
 - [Related](#related)    
 - [History Log](#history-log)
 
@@ -209,16 +210,84 @@ Widget class was declared (**index.php** in this very particular case).
 
 
 
+
+A concrete skin example
+==============
+
+To use a skin, we recommend the following approach:
+
+- add the skin to your widget configuration, AND as a css class as well. 
+- then create your skin file, using the skin css class to write your rules  
+
+
+Here is an example widget configuration array using the **looplab-dark** skin that I want to create:
+
+```yaml
+
+# ...
+-
+    name: looplab_monochrome_header
+    type: picasso
+    className: Ling\Light_Kit_BootstrapWidgetLibrary\Widget\Picasso\LoopLabMonoChromeHeaderWidget
+    widgetDir: templates/Light_Kit_BootstrapWidgetLibrary/widgets/picasso/LoopLabMonoChromeHeaderWidget
+    template: default.php
+    skin: looplab-dark
+    vars:
+        attr:
+            class: looplab-dark
+        title: Explore
+        text: Lorem ipsum, dolor sit amet consectetur adipisicing elit. Sapiente doloribus ut iure itaque quibusdam rem accusantium deserunt reprehenderit sunt minus.
+        button_url: '#'
+        button_class: btn btn-outline-secondary
+        button_text: Find Out More
+```
+                
+                
+Notice that I've written my **looplab-dark** skin in two different locations:
+
+- **skin**, to indicate that I want to include the skin file (named **looplab-dark.css** or **looplab-dark.css.php** in the **widget** dir)
+- **vars.attr.class**, to simply add the **looplab-dark** css class to my widget's container tag 
+
+
+Then, in my widget dir (in this case: **templates/Light_Kit_BootstrapWidgetLibrary/widgets/picasso/LoopLabMonoChromeHeaderWidget**),
+I create my skin file: **css/looplab-dark.css**, with the following content (for instance):
+
+
+```css
+.kit-bwl-monochrome_header.looplab-dark {
+    background: #333;
+    color: #fff;
+}
+```
+
+Note: the **kit-bwl-monochrome_header** is hardcoded in the template, so I can always rely on it.
+
+By combining the widget's default class and the skin class, I can apply style on a widget instance basis rather than on a widget type.
+In other words, I can add the **looplab_monochrome_header** widget multiple times in my page, each time with a different skin.
+ 
+
+
+
+
+
+                
+                
+
 Related
 ========
 
 - [Kit](https://github.com/lingtalfi/Kit): the widget rendering system 
 - [Kit_PrototypeWidget](https://github.com/lingtalfi/Kit_PrototypeWidget): another widget type
+- [Light_Kit_BootstrapWidgetLibrary](https://github.com/lingtalfi/Light_Kit_BootstrapWidgetLibrary): a widget library for the [Light framework](https://github.com/lingtalfi/Light), using picasso widgets
 
 
 History Log
 =============
 
+- 1.14.1 -- 2019-05-03
+
+    - update documentation
+    
 - 1.14.0 -- 2019-05-03
 
     - update VariableDescriptionFileGeneratorUtil, now the renderExample method indents the code with four spaces.
