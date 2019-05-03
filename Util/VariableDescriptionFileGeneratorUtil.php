@@ -6,6 +6,7 @@ namespace Ling\Kit_PicassoWidget\Util;
 
 use Ling\BabyYaml\BabyYamlUtil;
 use Ling\Bat\FileSystemTool;
+use Ling\Bat\StringTool;
 
 /**
  * The VariableDescriptionFileGeneratorUtil class.
@@ -195,6 +196,6 @@ class VariableDescriptionFileGeneratorUtil
      */
     protected function renderExample(array $vars)
     {
-        return BabyYamlUtil::getBabyYamlString($vars);
+        return StringTool::indent(BabyYamlUtil::getBabyYamlString($vars), 4);
     }
 }
