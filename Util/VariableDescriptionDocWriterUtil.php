@@ -294,6 +294,9 @@ class VariableDescriptionDocWriterUtil
 
 
         $widgetExample = $arr['example'] ?? "";
+        if (is_array($widgetExample)) {
+            $widgetExample = implode(', ', $widgetExample);
+        }
         $templates = [];
         $skins = [];
         //--------------------------------------------

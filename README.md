@@ -284,6 +284,10 @@ Related
 History Log
 =============
 
+- 1.18.0 -- 2019-05-06
+
+    - update VariableDescriptionDocWriterUtil, now example accepts array value
+    
 - 1.17.0 -- 2019-05-06
 
     - update VariableDescriptionFileGeneratorUtil, now the default value for string is set with the actual value being used 
