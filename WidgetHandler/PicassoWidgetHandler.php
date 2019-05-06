@@ -258,7 +258,6 @@ class PicassoWidgetHandler implements WidgetHandlerInterface
                                 }
                             }
 
-
                             return $content;
 
                         } else {

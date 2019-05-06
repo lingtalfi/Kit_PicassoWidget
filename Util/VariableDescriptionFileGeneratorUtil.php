@@ -158,7 +158,7 @@ class VariableDescriptionFileGeneratorUtil
             }
         } else {
             // string
-            $defaultValue = '""';
+//            $defaultValue = '""';
             $example = $value;
         }
 
