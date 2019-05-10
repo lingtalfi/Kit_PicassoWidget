@@ -284,6 +284,10 @@ Related
 History Log
 =============
 
+- 1.18.1 -- 2019-05-10
+
+    - fix VariableDescriptionDocWriterUtil no carriage return after long example (typo)
+    
 - 1.18.0 -- 2019-05-06
 
     - update VariableDescriptionDocWriterUtil, now example accepts array value

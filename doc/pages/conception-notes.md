@@ -13,6 +13,7 @@ Conception notes
 * [The variables description idea](#the-variables-description-idea)
 * [The css skin idea](#the-css-skin-idea)
 * [Dynamic nuggets](#dynamic-nuggets)
+* [Presets](#presets)
 
 
 
@@ -42,6 +43,8 @@ and is located right next to the php class, with the following structure:
 ----- css/                  # this directory contains the css code blocks to add to the chosen template
 --------- default.css       # can be any name, but it's the same name as a template
 --------- default.css.php   # use this instead of default.css to turn the file into a dynamic css nugget
+----- presets/              # the (widget configuration) built-in presets for this widget.  
+--------- preset_one.byml   # an example preset file  
 ```
 
 
@@ -291,6 +294,54 @@ the layout variables or the widgetConf array, you can use **$this**.
 
 
 
+Presets
+==========
+2019-05-06
+
+I open the conception note here because I'm thinking about it now, but the concept of preset is actually much deeper and extends
+way beyond the Kit_PicassoWidget. In fact, the concept of preset that I have in mind right now applies to the whole site builder conception.
+
+But you've got to start somewhere.
+
+
+So, the goal of the preset is to provide the user with some pre-made configuration snippets that the user can activate in one click.
+This saves a lot of time for the user, depending on the type of preset that we are talking about.
+
+For instance, to configure a picasso widget of type accordion, where you want to define each accordion item manually,
+and depending on how customizable the widget is, it might takes about from 1 to 5 minutes to just configure one accordion correctly.
+
+The use case for presets that I had in mind was in a website builder, the user can simply click on different presets to see what the widget looks like
+when configured properly, and when she likes a preset, she validates her choice and applies the preset.
+
+That works for widgets (or will work, as I am about to implement preset in Kit_PicassoWidget), but the concept of preset also works on bigger objects.
+
+For instance, we can have page presets. The time saved becomes huge all the sudden (about 5-6 widgets for a simple page), so 5 to 25 minutes saved per page preset.
+
+What about websites preset (for instance a blog contains this page and that page...): we can literally save hours of times for the customer, so definitely a concept to investigate.
+
+While I'm at it, let's put down my two cents thoughts about presets:
+
+They are two kind of presets:
+
+- built-in presets (the presets are created by the authors of the plugins/widgets/...)
+- user presets (created by the user for her own convenience)
+
+That sounds obvious, but the user presets are attached to the user id somehow, and are not shared to all users.
+And so in terms of babyYaml organization (I'm not discussing database organization yet, because the database part should be more obvious to implement),
+I believe that user presets should be in a specialized directory at the root of the app, like this:
+
+
+```txt
+- app/presets/ 
+    - users/
+        - widgets-presets/  
+        - page-presets/  
+        - site-presets/  
+```
+
+Whereas for built-in presets, I have no recommendation yet, but as far as PicassoWidget is concerned, I believe that storing them
+in the widget dir is a good idea (makes it easy for the maintainer to access the preset list if she wants to change something). 
+ 
 
  
 

@@ -182,7 +182,11 @@ class VariableDescriptionFileGeneratorUtil
         }
 
         if (null !== $example) {
-            $s .= $indent . "example: $example" . PHP_EOL;
+            if (strlen($example) > 75) {
+                $s .= $indent . BabyYamlUtil::getBabyYamlString(["example" => $example]) . PHP_EOL;
+            } else {
+                $s .= $indent . "example: $example" . PHP_EOL;
+            }
         }
         return $s;
     }
