@@ -109,6 +109,7 @@ class VariableDescriptionFileGeneratorUtil
         $defaultValue = $value;
         $description = "todo: here";
 
+
         if (1 === $indentBase && "attr" === $varName) {
             $description = "The attributes to add to the widget's container tag.";
         }
@@ -127,7 +128,8 @@ class VariableDescriptionFileGeneratorUtil
         } elseif (null === $value) {
             $defaultValue = "null";
         } elseif (is_array($value)) {
-            $defaultValue = "null";
+
+            $defaultValue = "[]";
             if (false === empty($value)) {
                 // numeric
                 if (array_key_exists("0", $value)) {

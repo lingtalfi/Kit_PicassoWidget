@@ -284,6 +284,10 @@ Related
 History Log
 =============
 
+- 1.20.1 -- 2019-05-13
+
+    - fix VariableDescriptionFileGeneratorUtil setting default value of null for arrays
+    
 - 1.20.0 -- 2019-05-13
 
     - update VariableDescriptionDocWriterUtil, now lists the presets
