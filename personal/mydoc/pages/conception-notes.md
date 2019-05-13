@@ -343,6 +343,26 @@ Whereas for built-in presets, I have no recommendation yet, but as far as Picass
 in the widget dir is a good idea (makes it easy for the maintainer to access the preset list if she wants to change something). 
  
 
+2019-05-11: Today it's a day off for me, but I just wanted to write some morning thoughts I had about presets, because they are VERY IMPORTANT.
+
+- PRESETS DON'T ADD ANY COST IN RUNTIME !!!
+
+A preset is like a copy paste operation that the user does during the configuration of her website.
+
+When the page is rendered, the preset is already written in the configuration and nobody can tell whether a preset was used or not.
+
+Usually in terms of implementation, we imagine a gui connected to a database, which provides the user with a list of presets.
+
+That works just fine with the database.
+
+With the babyYaml implementation, we can do the same if we write directly into the file, or we can just let the user copy paste
+the snippets manually (if I'm too lazy to implement the first idea), if that's ok with them. For instance, that's ok with me, because babyYaml is a developer format in the first place:
+it's a format for people who put their hands dirty, and so a copy paste is just a simple operation. 
+
+Ok, I'm out.
+ 
+
+
  
 
 

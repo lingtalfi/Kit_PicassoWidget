@@ -284,6 +284,14 @@ Related
 History Log
 =============
 
+- 1.20.0 -- 2019-05-13
+
+    - update VariableDescriptionDocWriterUtil, now lists the presets
+
+- 1.19.0 -- 2019-05-10
+
+    - update PicassoWidget->prepare method, now can transform the widget configuration array
+    
 - 1.18.1 -- 2019-05-10
 
     - fix VariableDescriptionDocWriterUtil no carriage return after long example (typo)
