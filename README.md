@@ -99,11 +99,11 @@ Here is the **widget** directory structure:
 ----- templates/            # this directory contains the templates available to this widget
 --------- prototype.php     # just an example, can be any name really...
 --------- default.php       # just an example, can be any name really...
------ js-init/
---------- default.js        # can be any name, but it's the same name as a template
---------- default.js.php    # use this instead of default.js to turn the file into a dynamic js nugget
+----- js/
+--------- default.js        # can be any name, but if it's the same name as a template, it's loaded automatically
+--------- default.js.php    # use this instead of default.js to turn the file into a dynamic js nugget (i.e. you can leverage the power of php to write your js files)
 ----- css/                  # this directory contains the css code blocks to add to the chosen template
---------- default.css       # can be any name, but it's the same name as a template
+--------- default.css       # can be any name, but if it's the same name as the chosen template, it's loaded automatically
 --------- default.css.php   # use this instead of default.css to turn the file into a dynamic css nugget
 ```
 
@@ -113,7 +113,7 @@ Note: the **widget** directory can be placed anywhere using the **widgetDir** di
 
 Notes:
 - because of this design, a planet can provide multiple Picasso widgets.
-- the **js-init** directory contains any [js code block](https://github.com/lingtalfi/HtmlPageTools/blob/master/doc/api/Ling/HtmlPageTools/Copilot/HtmlPageCopilot.md#property-jsCodeBlocks) that you want to inject in your html page.
+- the **js** directory contains any [js code block](https://github.com/lingtalfi/HtmlPageTools/blob/master/doc/api/Ling/HtmlPageTools/Copilot/HtmlPageCopilot.md#property-jsCodeBlocks) that you want to inject in your html page.
 - the files contained in the **js-init** directory must have the same name than the template being used (with the **.js** or **.js.php** extension instead). If the **.js.php** extension is used, it's [dynamic nugget](https://github.com/lingtalfi/Kit_PicassoWidget/blob/master/doc/pages/conception-notes.md#dynamic-nuggets).
 - the **css** directory contains any [css code block](https://github.com/lingtalfi/HtmlPageTools/blob/master/doc/api/Ling/HtmlPageTools/Copilot/HtmlPageCopilot.md#property-cssCodeBlocks) that you want to inject in an external css stylesheet.
 - the files contained in the **css** directory must have the same name than the template being used (with the **.css** or **.css.php** extension instead). If the **.css.php** extension is used, it's [dynamic nugget](https://github.com/lingtalfi/Kit_PicassoWidget/blob/master/doc/pages/conception-notes.md#dynamic-nuggets).
@@ -284,6 +284,10 @@ Related
 History Log
 =============
 
+- 1.23.0 -- 2019-05-13
+
+    - update widget structure, js-init directory becomes js directory
+    
 - 1.22.0 -- 2019-05-13
 
     - update VariableDescriptionFileGeneratorUtil now generate more convoluted examples

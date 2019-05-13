@@ -7,7 +7,7 @@ Conception notes
 * [Going deeper with widgets: the picasso widget](#going-deeper-with-widgets-the-picasso-widget)
     * [A planet can provide multiple widgets](#a-planet-can-provide-multiple-widgets)
     * [Using templates](#using-templates)
-    * [Using js-init files](#using-js-init-files)
+    * [Using js files](#using-js-files)
     * [Using css decorator files](#using-css-decorator-files)
     * [The picasso widget configuration array](#the-picasso-widget-configuration-array)
 * [The variables description idea](#the-variables-description-idea)
@@ -37,7 +37,7 @@ and is located right next to the php class, with the following structure:
 ----- templates/            # this directory contains the templates available to this widget
 --------- prototype.php     # just an example, can be any name really...
 --------- default.php       # just an example, can be any name really...
------ js-init/
+----- js/
 --------- default.js        # can be any name, but it's the same name as a template
 --------- default.js.php    # use this instead of default.js to turn the file into a dynamic js nugget
 ----- css/                  # this directory contains the css code blocks to add to the chosen template
@@ -58,7 +58,7 @@ So the main ideas here are:
 
 - a [planet](https://github.com/karayabin/universe-snapshot) can provide multiple widgets
 - the use of templates
-- the use of js-init files
+- the use of js files
 - the use of css decorator files
 
 
@@ -79,12 +79,12 @@ I decided to use templates for two reasons:
         and then make it dynamic using php code injection, and so starting by creating a prototype template (by copy-pasting
         from the original template model) is a methodology that I promote. 
 
-### Using js-init files
+### Using js files
 
 In the picasso approach, we like to put js scripts at the end of the html page, just before the closing body tag.
 In there, we also put the js code for the widgets that need such initialization code.
 
-The idea with the js-init files is that when the template is loaded, the initialization js code blocks are also automatically
+The idea with the js files is that when the template is loaded, the initialization js code blocks are also automatically
 loaded (via the use of the Copilot object from the [HtmlPageRenderer](https://github.com/lingtalfi/HtmlPageTools/blob/master/doc/api/Ling/HtmlPageTools/Renderer/HtmlPageRenderer.md)).
 
 The main benefit of using js-init files is that we use js files, and so the writing of initialization code is easy (because
@@ -93,7 +93,7 @@ your IDE will provide you with the correct js syntax highlighting).
 Now with this system, the js init file name must match the template name.
 
 
-Now if you need to leverage the power of php in your js nugget (aka js-init file), add the **.php** extension.
+Now if you need to leverage the power of php in your js nugget (aka js file), add the **.php** extension.
 This will turn your file into a [dynamic nugget](#dynamic-nuggets).
 
 
