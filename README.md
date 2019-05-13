@@ -284,6 +284,10 @@ Related
 History Log
 =============
 
+- 1.22.0 -- 2019-05-13
+
+    - update VariableDescriptionFileGeneratorUtil now generate more convoluted examples
+    
 - 1.21.0 -- 2019-05-13
 
     - update VariableDescriptionDocWriterUtil now add "back to top" links

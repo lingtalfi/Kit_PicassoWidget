@@ -54,7 +54,7 @@ class VariableDescriptionFileGeneratorUtil
 
 
                         $sVars = $this->renderVars($widgetConf['vars']);
-                        $sExample = $this->renderExample($widgetConf['vars']);
+                        $sExample = $this->renderExample($widgetConf);
 
                         $content = str_replace([
                             '${widgetClassName}',
