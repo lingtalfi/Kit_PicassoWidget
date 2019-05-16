@@ -14,6 +14,8 @@ Conception notes
 * [The css skin idea](#the-css-skin-idea)
 * [Dynamic nuggets](#dynamic-nuggets)
 * [Presets](#presets)
+* [Aliases](#aliases)
+* [Caching](#caching)
 
 
 
@@ -364,7 +366,127 @@ Ok, I'm out.
 
 
  
+Aliases
+-----------
+2019-05-14
 
+
+If I project myself in the future, and put myself in the shoes a a website builder user, creating her pages, 
+then at some point there is a functionality that the user should have: the possibility to create aliases.
+
+What does that mean?
+
+In simple terms, an alias is just a reference to something else.
+
+Apply this to widgets, and all the sudden you can create a widget once, and reference it as many times as you want,
+exactly like symbolic links on linux.
+
+What's the benefits of aliases for the user?
+
+The benefit is quite simple to understand: imagine that the user creates a multi-pages site.
+
+It's very likely that the footer will be the same. The main nav is could also be exactly the same (depending on whether the active
+link is set dynamically or statically via the configuration).
+
+So the benefit of aliases is that the user can modify ONCE the footer to get an updated footer on all the pages (using the footer) of her website.
+
+That sounds a very nice feature to have for the user.
+
+However I've something to say about that:
+
+implementing a real alias system would add more complexity to the kit thing, and at this point of development, I think I've had enough with complexity:
+the skin/js/nugget/presets system is already almost messy, and probably super powerful, and it needs (I believe) to be tested in the wild before any decision about adding new features
+can be made. 
+
+I want to first deploy the kit system with this messy system, so that I can adjust/fine-tune/clean-up the system first.
+
+And so I've found a possibly better solution than a real alias system: a fake alias system.
+
+That's how I want to implement it, because it doesn't add complexity to the kit picasso widget system.
+
+How does the fake alias system work?
+
+Well, in terms of gui, you can do something that looks like the real alias system, but in the background, rather than using real aliases,
+just let the computer copy the widget configuration on all pages.
+
+The effect is exactly the same, except that the computer has a very little tiny bit more to do than with real aliases, but the complexity of 
+the kit picasso widget is lower, which is totally worth it I believe.
+
+So, even if the kit picasso widget system was already clean, I would still go with the fake implementation because it maintains a low level of complexity.
+
+
+
+
+Caching
+-------------
+2019-05-16
+
+
+One of the most important topics in my opinion is the caching system you use.
+
+What follows is my two cents about implementing a caching system for PicassoWidget.
+
+The most efficient caching, if you can, is to cache the whole page. 
+
+But sometimes, this might not be an option. For instance, if the user is logged in,
+and the header nav has the name of the user in it, or if the left menu in the user account
+reflects the user items, etc...
+
+In those cases, it might still worth to implement a caching system based on the widgets rather
+than the whole page.
+
+Because the page load time might be faster if some widgets are cached (I believe).
+
+So, how do we go about implementing a widget based cache?
+
+Well, I thought of different solutions this morning, one of them being to render the whole
+page, then preg replace the dynamic ones, but that seemed not very practical and risky,
+and so I eventually came across another idea that I present to my future self as the one 
+I would like to be implemented.
+
+But before I go, quick reminder: in kit a widget has actually multiple parts (and that's the
+main difficulty): the widget itself, but also assets/nuggets registered via the copilot and
+which end in the head of the page, or at the bottom part just before the end body tag.
+
+So, potentially three parts (head, widget, body end).
+
+Now my idea is quite simple actually: cache 2 different files:
+
+- the widget file containing just the widget html code
+- an asset dependency file, containing the code which registers the assets to the copilot
+    (and not directly the assets), so that we get the opportunity to resolve assets conflicts.
+    
+So basically, the synopsis in this case (where the whole page can't be cached) is that
+each widget gets cached and gives 3 files (at most).
+
+And so when the application reads such a page, it basically does 3 if conditions per widget
+(which I believe is faster than interpreting the whole widget, and that's the the effective incentive
+of this idea), and if the file exists, they are included.
+
+
+In order to implement such a system, I believe that we need some kind of copilot that resets itself
+after each widget, so that we can cache the widget resources in the first place.
+But my job is over for today, the rest is left to the implementor.
+
+
+      
+
+
+
+  
+  
+
+
+
+
+
+ 
+ 
+
+
+
+
+ 
 
  
 

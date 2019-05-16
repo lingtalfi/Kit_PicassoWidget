@@ -284,6 +284,10 @@ Related
 History Log
 =============
 
+- 1.24.0 -- 2019-05-16
+
+    - update PicassoWidgetHandler, now passes the copilot to the widget instances automatically
+    
 - 1.23.0 -- 2019-05-13
 
     - update widget structure, js-init directory becomes js directory

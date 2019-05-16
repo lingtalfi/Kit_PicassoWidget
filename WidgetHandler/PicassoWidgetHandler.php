@@ -155,6 +155,16 @@ class PicassoWidgetHandler implements WidgetHandlerInterface
 
 
                         //--------------------------------------------
+                        // SET THE COPILOT
+                        //--------------------------------------------
+                        /**
+                         * In some cases, it's practical for the templates to have
+                         * a direct access to a copilot instance.
+                         */
+                        $instance->setCopilot($copilot);
+
+
+                        //--------------------------------------------
                         // PREPARE THE WIDGET
                         //--------------------------------------------
                         $instance->prepare($widgetConf, $copilot);
