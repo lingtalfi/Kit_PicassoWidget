@@ -4,6 +4,8 @@ namespace Ling\Kit_PicassoWidget\WidgetHandler;
 
 
 use Ling\HtmlPageTools\Copilot\HtmlPageCopilot;
+use Ling\Kit\PageRenderer\KitPageRendererAwareInterface;
+use Ling\Kit\PageRenderer\KitPageRendererInterface;
 use Ling\Kit\WidgetHandler\WidgetHandlerInterface;
 use Ling\Kit_PicassoWidget\Exception\PicassoWidgetException;
 use Ling\Kit_PicassoWidget\Widget\PicassoWidget;
@@ -78,7 +80,7 @@ use Ling\Kit_PicassoWidget\Widget\PicassoWidget;
  *
  *
  */
-class PicassoWidgetHandler implements WidgetHandlerInterface
+class PicassoWidgetHandler implements WidgetHandlerInterface, KitPageRendererAwareInterface
 {
 
 
@@ -113,6 +115,12 @@ class PicassoWidgetHandler implements WidgetHandlerInterface
      */
     protected $showJsNuggetHeaders;
 
+    /**
+     * This property holds the kitPageRenderer for this instance.
+     * @var KitPageRendererInterface
+     */
+    protected $kitPageRenderer;
+
 
     /**
      * Builds the PicassoWidgetHandler instance.
@@ -123,7 +131,18 @@ class PicassoWidgetHandler implements WidgetHandlerInterface
         $this->widgetBaseDir = "";
         $this->showCssNuggetHeaders = $options['showCssNuggetHeaders'] ?? false;
         $this->showJsNuggetHeaders = $options['showJsNuggetHeaders'] ?? false;
+        $this->kitPageRenderer = null;
     }
+
+
+    /**
+     * @implementation
+     */
+    public function setKitPageRenderer(KitPageRendererInterface $renderer)
+    {
+        $this->kitPageRenderer = $renderer;
+    }
+
 
     /**
      * Sets the widgetBaseDir.
@@ -162,6 +181,14 @@ class PicassoWidgetHandler implements WidgetHandlerInterface
                          * a direct access to a copilot instance.
                          */
                         $instance->setCopilot($copilot);
+
+
+                        //--------------------------------------------
+                        // SET THE KIT PAGE RENDERER
+                        //--------------------------------------------
+                        if ($instance instanceof KitPageRendererAwareInterface) {
+                            $instance->setKitPageRenderer($this->kitPageRenderer);
+                        }
 
 
                         //--------------------------------------------

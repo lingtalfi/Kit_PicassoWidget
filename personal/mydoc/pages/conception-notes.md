@@ -469,6 +469,11 @@ after each widget, so that we can cache the widget resources in the first place.
 But my job is over for today, the rest is left to the implementor.
 
 
+Also, I forgot to say, the widgets shouldn't use the copilot except for the assets;
+so they shouldn't for instance try to set the meta title, or other metas, or otherwise the system I described above
+needs to be adjusted (plus, it doesn't make much sense to set the meta title from a widget). 
+
+
       
 
 

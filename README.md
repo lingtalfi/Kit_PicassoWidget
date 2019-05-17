@@ -284,6 +284,10 @@ Related
 History Log
 =============
 
+- 1.25.0 -- 2019-05-17
+
+    - update PicassoWidgetHandler, now can pass the KitPageRendererInterface to widgets so that they can print zones
+    
 - 1.24.0 -- 2019-05-16
 
     - update PicassoWidgetHandler, now passes the copilot to the widget instances automatically
