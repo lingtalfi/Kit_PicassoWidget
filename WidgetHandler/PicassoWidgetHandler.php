@@ -251,25 +251,33 @@ class PicassoWidgetHandler implements WidgetHandlerInterface, KitPageRendererAwa
                             //--------------------------------------------
                             // REGISTERING JS NUGGET (INIT CODE BLOCKS)
                             //--------------------------------------------
-                            $hasNugget = false;
-                            $jsInitFile = $widgetDir . "/js/$templateName.js";
-                            if (file_exists($jsInitFile)) {
-                                $hasNugget = true;
-                                $codeBlock = file_get_contents($jsInitFile);
+                            if (array_key_exists("js", $widgetConf)) {
+                                $jsNuggetName = $widgetConf['js'];
                             } else {
-                                $jsInitFile .= ".php";
-                                if (file_exists($jsInitFile)) {
-                                    $codeBlock = $instance->renderFile($jsInitFile, $widgetVars);
-                                    $hasNugget = true;
-                                }
-
+                                $jsNuggetName = $templateName;
                             }
+                            if (null !== $jsNuggetName) {
 
-                            if (true === $hasNugget) {
-                                if (true === $this->showJsNuggetHeaders) {
-                                    $codeBlock = "/** $className */" . PHP_EOL . $codeBlock;
+                                $hasNugget = false;
+                                $jsInitFile = $widgetDir . "/js/$jsNuggetName.js";
+                                if (file_exists($jsInitFile)) {
+                                    $hasNugget = true;
+                                    $codeBlock = file_get_contents($jsInitFile);
+                                } else {
+                                    $jsInitFile .= ".php";
+                                    if (file_exists($jsInitFile)) {
+                                        $codeBlock = $instance->renderFile($jsInitFile, $widgetVars);
+                                        $hasNugget = true;
+                                    }
+
                                 }
-                                $copilot->addJsCodeBlock($codeBlock);
+
+                                if (true === $hasNugget) {
+                                    if (true === $this->showJsNuggetHeaders) {
+                                        $codeBlock = "/** $className */" . PHP_EOL . $codeBlock;
+                                    }
+                                    $copilot->addJsCodeBlock($codeBlock);
+                                }
                             }
 
 

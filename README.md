@@ -55,6 +55,11 @@ template: $templateName         # for instance: default.php, or prototype.php. T
 # If it's defined, it indicates which skin to use.
 # If null, this means use no skin at all (the user probably wants to take care of the css by herself)
 ?skin: null  
+# The js init file to use. 
+# If not defined, it defaults to the template name. 
+# If it's defined, it indicates the js init file to use.
+# If null, this means use no js init file at all (the user probably wants to take care of the js by herself)
+?js: null  
 ?vars:                          # An array of variables to pass to the template
     my_value: 667 
     ?attr:                          # An array of html attributes to add to the widget's outer tag
@@ -174,6 +179,7 @@ zones:
             className: ZeroWidget
             template: default.php
             ?skin: null
+            ?js: null
             ?vars:  
                 my_value: 668
                 ?attr:
@@ -284,6 +290,10 @@ Related
 History Log
 =============
 
+- 1.26.0 -- 2019-05-17
+
+    - add the js var to the picasso widget array
+    
 - 1.25.0 -- 2019-05-17
 
     - update PicassoWidgetHandler, now can pass the KitPageRendererInterface to widgets so that they can print zones
