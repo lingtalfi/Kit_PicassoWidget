@@ -290,6 +290,10 @@ Related
 History Log
 =============
 
+- 1.26.2 -- 2019-07-03
+
+    - adding the concept of dynamic data extraction in the conception notes again (updated wrong file last time)
+    
 - 1.26.1 -- 2019-07-03
 
     - adding the concept of dynamic data extraction in the conception notes

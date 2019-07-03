@@ -16,6 +16,7 @@ Conception notes
 * [Presets](#presets)
 * [Aliases](#aliases)
 * [Caching](#caching)
+* [Passing dynamic data down the pipe](#passing-dynamic-data-down-the-pipe)
 
 
 
@@ -483,22 +484,54 @@ needs to be adjusted (plus, it doesn't make much sense to set the meta title fro
 
 
 
-  
-  
+
+Passing dynamic data down the pipe
+-------------
+2019-07-03
+
+
+When you want to inject dynamic data to a template, you can use a DataExtractor object.
+
+
+A DataExtractor extract the data from the model, and passes it through the pipe, down to the template.
+
+The passed data is formatted for the specific template which needs/calls that data.
+
+In other words, we can think of the model as a pool of abstract data without a form,
+and the data becomes concrete only when it's called by a template.
+
+This whole operation is also known as passing data down the pipe. This image comes from the fact
+that I represent the model (data) at the top, and the template at the bottom, and the imaginary
+link between both I call a pipe, since data flows through it.
+
+
+
+As far as the notation in the babyYaml file, we use a simple string.
+
+We create a link (aka pipe) by writing down the class name (of the DataExtractor), 
+followed by two consecutive colon symbols (::), followed by the method name.
+
+For instance:
+
+- MyNamespace\DataExtractor\ProductListExtractor::productListForPageOne
+
+
+If we want to pass simple arguments, we can simply add parentheses and the arguments in 
+shortcode style inside of them.
+
+
+For instance:
+
+- MyNamespace\DataExtractor\ProductListExtractor::productListForPageOne(Hello, 780)
 
 
 
 
 
- 
- 
 
 
 
 
- 
-
- 
 
 
 
