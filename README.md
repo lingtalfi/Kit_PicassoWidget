@@ -290,6 +290,10 @@ Related
 History Log
 =============
 
+- 1.26.1 -- 2019-07-03
+
+    - adding the concept of dynamic data extraction in the conception notes
+    
 - 1.26.0 -- 2019-05-17
 
     - add the js var to the picasso widget array
