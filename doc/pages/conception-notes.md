@@ -490,39 +490,20 @@ Passing dynamic data down the pipe
 2019-07-03
 
 
-When you want to inject dynamic data to a template, you can use a DataExtractor object.
+When you want to inject dynamic data to a template, you can use a pageConfTransformer.
+
+The DynamicVariableTransformer allows you to create a variable from the controller and reference it in your template
+using the ${tag} notation. More details in the source code of the [LightKitPageRenderer:renderPage](https://github.com/lingtalfi/Light_Kit/blob/master/doc/api/Ling/Light_Kit/PageRenderer/LightKitPageRenderer/renderPage.md) method.
+
+The LazyReference method call system alleviates the controller, and let you call any class directly from the template, 
+using a special notation.
+
+Note that the first technique has the most flexibility, since the controller potentially has access to any data it wants,
+whereas with the second technique, you are limited to what can be written in a string.
+I would recommend that you use the dynamic variable system for any data that belongs to an user, and optionally use
+the second technique when the data is anonymous and predictable.
 
 
-A DataExtractor extract the data from the model, and passes it through the pipe, down to the template.
-
-The passed data is formatted for the specific template which needs/calls that data.
-
-In other words, we can think of the model as a pool of abstract data without a form,
-and the data becomes concrete only when it's called by a template.
-
-This whole operation is also known as passing data down the pipe. This image comes from the fact
-that I represent the model (data) at the top, and the template at the bottom, and the imaginary
-link between both I call a pipe, since data flows through it.
-
-
-
-As far as the notation in the babyYaml file, we use a simple string.
-
-We create a link (aka pipe) by writing down the class name (of the DataExtractor), 
-followed by two consecutive colon symbols (::), followed by the method name.
-
-For instance:
-
-- MyNamespace\DataExtractor\ProductListExtractor::productListForPageOne
-
-
-If we want to pass simple arguments, we can simply add parentheses and the arguments in 
-shortcode style inside of them.
-
-
-For instance:
-
-- MyNamespace\DataExtractor\ProductListExtractor::productListForPageOne(Hello, 780)
 
 
 
