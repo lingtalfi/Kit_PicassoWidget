@@ -20,6 +20,18 @@ Table of contents
     - [VariableDescriptionDocWriterUtil::writeDoc](https://github.com/lingtalfi/Kit_PicassoWidget/blob/master/doc/api/Ling/Kit_PicassoWidget/Util/VariableDescriptionDocWriterUtil/writeDoc.md) &ndash; Writes the widget documentation to the given file, and returns whether the writing of the file was successful.
 - [VariableDescriptionFileGeneratorUtil](https://github.com/lingtalfi/Kit_PicassoWidget/blob/master/doc/api/Ling/Kit_PicassoWidget/Util/VariableDescriptionFileGeneratorUtil.md) &ndash; The VariableDescriptionFileGeneratorUtil class.
     - [VariableDescriptionFileGeneratorUtil::generate](https://github.com/lingtalfi/Kit_PicassoWidget/blob/master/doc/api/Ling/Kit_PicassoWidget/Util/VariableDescriptionFileGeneratorUtil/generate.md) &ndash; Reads a [page configuration array](https://github.com/lingtalfi/Kit#the-kit-configuration-array), and writes a base variable description file for all picasso widgets found.
+- [EasyLightPicassoWidget](https://github.com/lingtalfi/Kit_PicassoWidget/blob/master/doc/api/Ling/Kit_PicassoWidget/Widget/EasyLightPicassoWidget.md) &ndash; The EasyLightPicassoWidget class.
+    - [EasyLightPicassoWidget::__construct](https://github.com/lingtalfi/Kit_PicassoWidget/blob/master/doc/api/Ling/Kit_PicassoWidget/Widget/EasyLightPicassoWidget/__construct.md) &ndash; Builds the EasyPicassoWidget instance.
+    - [EasyLightPicassoWidget::setKitPageRenderer](https://github.com/lingtalfi/Kit_PicassoWidget/blob/master/doc/api/Ling/Kit_PicassoWidget/Widget/EasyLightPicassoWidget/setKitPageRenderer.md) &ndash; Sets the KitPageRenderer instance.
+    - [WidgetConfAwarePicassoWidget::setWidgetConf](https://github.com/lingtalfi/Kit_PicassoWidget/blob/master/doc/api/Ling/Kit_PicassoWidget/Widget/WidgetConfAwarePicassoWidget/setWidgetConf.md) &ndash; Sets the widget configuration.
+    - [WidgetConfAwarePicassoWidget::getWidgetConf](https://github.com/lingtalfi/Kit_PicassoWidget/blob/master/doc/api/Ling/Kit_PicassoWidget/Widget/WidgetConfAwarePicassoWidget/getWidgetConf.md) &ndash; Returns the widget configuration.
+    - [PicassoWidget::getLibraries](https://github.com/lingtalfi/Kit_PicassoWidget/blob/master/doc/api/Ling/Kit_PicassoWidget/Widget/PicassoWidget/getLibraries.md) &ndash; Returns the libraries of this instance.
+    - [PicassoWidget::setCopilot](https://github.com/lingtalfi/Kit_PicassoWidget/blob/master/doc/api/Ling/Kit_PicassoWidget/Widget/PicassoWidget/setCopilot.md) &ndash; Sets the copilot.
+    - [PicassoWidget::renderFile](https://github.com/lingtalfi/Kit_PicassoWidget/blob/master/doc/api/Ling/Kit_PicassoWidget/Widget/PicassoWidget/renderFile.md) &ndash; Parses the file identified and returns its interpreted content (by injecting the variables in it).
+    - [PicassoWidget::prepare](https://github.com/lingtalfi/Kit_PicassoWidget/blob/master/doc/api/Ling/Kit_PicassoWidget/Widget/PicassoWidget/prepare.md) &ndash; Prepares the widget according to the given widget configuration.
+    - ZephyrTemplateEngine::render &ndash; Parses the template identified by $resourceId and returns the interpreted template (the template with the variables injected in it).
+    - ZephyrTemplateEngine::getErrors &ndash; Returns the errors of this instance.
+    - ZephyrTemplateEngine::setDirectory &ndash; Sets the directory.
 - [PicassoWidget](https://github.com/lingtalfi/Kit_PicassoWidget/blob/master/doc/api/Ling/Kit_PicassoWidget/Widget/PicassoWidget.md) &ndash; The PicassoWidget class.
     - [PicassoWidget::__construct](https://github.com/lingtalfi/Kit_PicassoWidget/blob/master/doc/api/Ling/Kit_PicassoWidget/Widget/PicassoWidget/__construct.md) &ndash; Builds the PicassoWidget instance.
     - [PicassoWidget::getLibraries](https://github.com/lingtalfi/Kit_PicassoWidget/blob/master/doc/api/Ling/Kit_PicassoWidget/Widget/PicassoWidget/getLibraries.md) &ndash; Returns the libraries of this instance.
@@ -56,6 +68,8 @@ Dependencies
 - [BabyYaml](https://github.com/lingtalfi/BabyYaml)
 - [Bat](https://github.com/lingtalfi/Bat)
 - [DirScanner](https://github.com/lingtalfi/DirScanner)
+- [Light](https://github.com/lingtalfi/Light)
+- [Light_Kit](https://github.com/lingtalfi/Light_Kit)
 - [HtmlPageTools](https://github.com/lingtalfi/HtmlPageTools)
 - [ZephyrTemplateEngine](https://github.com/lingtalfi/ZephyrTemplateEngine)
 

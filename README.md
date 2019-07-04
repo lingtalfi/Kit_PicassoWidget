@@ -290,6 +290,10 @@ Related
 History Log
 =============
 
+- 1.27.0 -- 2019-07-04
+
+    - add EasyLightPicassoWidget class
+    
 - 1.26.3 -- 2019-07-04
 
     - update the concept of dynamic data extraction in the conception notes
