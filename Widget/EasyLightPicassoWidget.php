@@ -48,6 +48,16 @@ class EasyLightPicassoWidget extends WidgetConfAwarePicassoWidget implements Kit
 
 
     /**
+     * Returns the kit page renderer
+     * @return KitPageRendererInterface|null
+     */
+    public function getKitPageRenderer()
+    {
+        return $this->kitPageRenderer;
+    }
+
+
+    /**
      * Returns a light service container instance.
      * If no container is set, a dummy container is created on the fly and returned on subsequent calls.
      *

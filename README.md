@@ -290,6 +290,10 @@ Related
 History Log
 =============
 
+- 1.28.0 -- 2019-07-11
+
+    - add EasyLightPicassoWidget::getKitPageRenderer method
+
 - 1.27.0 -- 2019-07-04
 
     - add EasyLightPicassoWidget class
