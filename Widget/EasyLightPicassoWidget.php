@@ -17,6 +17,13 @@ use Ling\Light_Kit\PageRenderer\LightKitPageRenderer;
  * The idea of this class is to provide all available syntactic sugar, so that the developer who extend this class
  * has all for free (at the cost of perhaps a small performance cost, if not all features are used).
  *
+ * This includes:
+ *
+ * - access to the light service container (to all all services)
+ * - access to the light kit page renderer (to call sub-zones for instance)
+ *
+ *
+ *
  */
 class EasyLightPicassoWidget extends WidgetConfAwarePicassoWidget implements KitPageRendererAwareInterface
 {
