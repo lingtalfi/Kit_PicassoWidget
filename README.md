@@ -290,6 +290,10 @@ Related
 History Log
 =============
 
+- 1.29.0 -- 2019-07-24
+
+    - update VariableDescriptionDocWriterUtil now insert the image name before the screenshots
+    
 - 1.28.1 -- 2019-07-18
 
     - update docTools documentation, add links to source code for classes and methods
