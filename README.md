@@ -1,6 +1,6 @@
 Kit_PicassoWidget
 ===========
-2019-04-24 -> 2021-03-05
+2019-04-24 -> 2021-03-08
 
 
 
@@ -295,6 +295,10 @@ Related
 History Log
 =============
 
+- 1.30.4 -- 2021-03-08
+
+    - update PicassoWidgetHandler->handle, now ignore skin if empty
+  
 - 1.30.3 -- 2021-03-05
 
     - update README.md, add install alternative

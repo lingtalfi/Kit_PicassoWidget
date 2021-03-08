@@ -267,7 +267,7 @@ class PicassoWidgetHandler implements WidgetHandlerInterface, KitPageRendererAwa
                             //--------------------------------------------
                             // REGISTERING CSS NUGGETS (CODE BLOCKS)
                             //--------------------------------------------
-                            if (array_key_exists("skin", $widgetConf)) {
+                            if (array_key_exists("skin", $widgetConf) && false === empty($widgetConf['skin'])) {
                                 $skin = $widgetConf['skin'];
                             } else {
                                 $skin = $templateName;
