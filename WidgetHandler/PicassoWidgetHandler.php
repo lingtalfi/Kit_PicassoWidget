@@ -158,7 +158,35 @@ class PicassoWidgetHandler implements WidgetHandlerInterface, KitPageRendererAwa
     /**
      * @implementation
      */
-    public function handle(array $widgetConf, HtmlPageCopilot $copilot, array $debug): string
+    public function process(array &$widgetConf, array $debug): void
+    {
+        if (array_key_exists("className", $widgetConf)) {
+
+            $className = $widgetConf['className'];
+
+            try {
+                $class = new \ReflectionClass($className);
+                $widgetDir = $this->getWidgetDir($widgetConf, $class);
+                $brainFile = $widgetDir . "/brain/brain.php";
+                if(true === file_exists($brainFile)){
+                    require_once $brainFile;
+                }
+
+
+            } catch (\ReflectionException) {
+                $this->error("Cannot instantiate class $className.", $widgetConf, $debug);
+            }
+        } else {
+            $this->error("Config error: the className is missing.", $widgetConf, $debug);
+        }
+
+    }
+
+
+    /**
+     * @implementation
+     */
+    public function render(array $widgetConf, HtmlPageCopilot $copilot, array $debug): string
     {
         if (array_key_exists("className", $widgetConf)) {
             if (array_key_exists("template", $widgetConf)) {
@@ -199,16 +227,7 @@ class PicassoWidgetHandler implements WidgetHandlerInterface, KitPageRendererAwa
                         //--------------------------------------------
                         // FINDING THE WIDGET DIR
                         //--------------------------------------------
-                        if (array_key_exists("widgetDir", $widgetConf)) {
-                            $widgetDir = $widgetConf['widgetDir'];
-                            if ('/' !== substr($widgetDir, 0, 1)) {
-                                $widgetDir = $this->widgetBaseDir . "/" . $widgetDir;
-                            }
-                        } else {
-                            $file = $class->getFileName();
-                            $dir = dirname($file);
-                            $widgetDir = $dir . "/widget";
-                        }
+                        $widgetDir = $this->getWidgetDir($widgetConf, $class);
 
 
                         $templateFileName = str_replace('..', '', $template); // preventing escalating the filesystem
@@ -335,5 +354,32 @@ class PicassoWidgetHandler implements WidgetHandlerInterface, KitPageRendererAwa
         $zone = $debug['zone'];
         $page = $debug['page'];
         throw new PicassoWidgetException($msg . " Widget \"$name\", zone \"$zone\", page \"$page\".");
+    }
+
+
+    //--------------------------------------------
+    //
+    //--------------------------------------------
+    /**
+     * Returns the widget dir.
+     *
+     *
+     * @param array $widgetConf
+     * @param \ReflectionClass $class
+     * @return string
+     */
+    private function getWidgetDir(array $widgetConf, \ReflectionClass $class): string
+    {
+        if (array_key_exists("widgetDir", $widgetConf)) {
+            $widgetDir = $widgetConf['widgetDir'];
+            if ('/' !== substr($widgetDir, 0, 1)) {
+                $widgetDir = $this->widgetBaseDir . "/" . $widgetDir;
+            }
+        } else {
+            $file = $class->getFileName();
+            $dir = dirname($file);
+            $widgetDir = $dir . "/widget";
+        }
+        return $widgetDir;
     }
 }
