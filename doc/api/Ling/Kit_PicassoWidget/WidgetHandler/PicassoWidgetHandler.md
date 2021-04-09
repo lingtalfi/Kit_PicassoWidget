@@ -90,7 +90,6 @@ class <span class="pl-k">PicassoWidgetHandler</span> implements [WidgetHandlerIn
     - protected bool [$showCssNuggetHeaders](#property-showCssNuggetHeaders) ;
     - protected bool [$showJsNuggetHeaders](#property-showJsNuggetHeaders) ;
     - protected [Ling\Kit\PageRenderer\KitPageRendererInterface](https://github.com/lingtalfi/Kit/blob/master/doc/api/Ling/Kit/PageRenderer/KitPageRendererInterface.md) [$kitPageRenderer](#property-kitPageRenderer) ;
-    - private array [$brainVars](#property-brainVars) ;
 
 - Methods
     - public [__construct](https://github.com/lingtalfi/Kit_PicassoWidget/blob/master/doc/api/Ling/Kit_PicassoWidget/WidgetHandler/PicassoWidgetHandler/__construct.md)(?array $options = []) : void
@@ -99,9 +98,8 @@ class <span class="pl-k">PicassoWidgetHandler</span> implements [WidgetHandlerIn
     - public [process](https://github.com/lingtalfi/Kit_PicassoWidget/blob/master/doc/api/Ling/Kit_PicassoWidget/WidgetHandler/PicassoWidgetHandler/process.md)(array &$widgetConf, array $debug) : void
     - public [render](https://github.com/lingtalfi/Kit_PicassoWidget/blob/master/doc/api/Ling/Kit_PicassoWidget/WidgetHandler/PicassoWidgetHandler/render.md)(array $widgetConf, [Ling\HtmlPageTools\Copilot\HtmlPageCopilot](https://github.com/lingtalfi/HtmlPageTools/blob/master/doc/api/Ling/HtmlPageTools/Copilot/HtmlPageCopilot.md) $copilot, array $debug) : string
     - protected [error](https://github.com/lingtalfi/Kit_PicassoWidget/blob/master/doc/api/Ling/Kit_PicassoWidget/WidgetHandler/PicassoWidgetHandler/error.md)(string $msg, array $widgetConf, array $debug) : void
-    - protected [registerWidgetVar](https://github.com/lingtalfi/Kit_PicassoWidget/blob/master/doc/api/Ling/Kit_PicassoWidget/WidgetHandler/PicassoWidgetHandler/registerWidgetVar.md)(string $key, mixed $value) : void
     - private [getWidgetDir](https://github.com/lingtalfi/Kit_PicassoWidget/blob/master/doc/api/Ling/Kit_PicassoWidget/WidgetHandler/PicassoWidgetHandler/getWidgetDir.md)(array $widgetConf, ReflectionClass $class) : string
-    - private [processBrainFile](https://github.com/lingtalfi/Kit_PicassoWidget/blob/master/doc/api/Ling/Kit_PicassoWidget/WidgetHandler/PicassoWidgetHandler/processBrainFile.md)(string $file) : void
+    - private [processBrainFile](https://github.com/lingtalfi/Kit_PicassoWidget/blob/master/doc/api/Ling/Kit_PicassoWidget/WidgetHandler/PicassoWidgetHandler/processBrainFile.md)(string $file, array &$vars) : void
 
 }
 
@@ -144,12 +142,6 @@ Properties
     
     
 
-- <span id="property-brainVars"><b>brainVars</b></span>
-
-    This property holds the brainVars for this instance.
-    
-    
-
 
 
 Methods
@@ -161,7 +153,6 @@ Methods
 - [PicassoWidgetHandler::process](https://github.com/lingtalfi/Kit_PicassoWidget/blob/master/doc/api/Ling/Kit_PicassoWidget/WidgetHandler/PicassoWidgetHandler/process.md) &ndash; Process the widget.
 - [PicassoWidgetHandler::render](https://github.com/lingtalfi/Kit_PicassoWidget/blob/master/doc/api/Ling/Kit_PicassoWidget/WidgetHandler/PicassoWidgetHandler/render.md) &ndash; Returns the html code of the widget, according to the widget configuration.
 - [PicassoWidgetHandler::error](https://github.com/lingtalfi/Kit_PicassoWidget/blob/master/doc/api/Ling/Kit_PicassoWidget/WidgetHandler/PicassoWidgetHandler/error.md) &ndash; Throws an useful error message.
-- [PicassoWidgetHandler::registerWidgetVar](https://github.com/lingtalfi/Kit_PicassoWidget/blob/master/doc/api/Ling/Kit_PicassoWidget/WidgetHandler/PicassoWidgetHandler/registerWidgetVar.md) &ndash; Method for the brain file to register a widget variable (which will be available to the template).
 - [PicassoWidgetHandler::getWidgetDir](https://github.com/lingtalfi/Kit_PicassoWidget/blob/master/doc/api/Ling/Kit_PicassoWidget/WidgetHandler/PicassoWidgetHandler/getWidgetDir.md) &ndash; Returns the widget dir.
 - [PicassoWidgetHandler::processBrainFile](https://github.com/lingtalfi/Kit_PicassoWidget/blob/master/doc/api/Ling/Kit_PicassoWidget/WidgetHandler/PicassoWidgetHandler/processBrainFile.md) &ndash; Process the brain file.
 

@@ -64,7 +64,7 @@ Returns void.
 
 Source Code
 ===========
-See the source code for method [PicassoWidgetHandler::process](https://github.com/lingtalfi/Kit_PicassoWidget/blob/master/WidgetHandler/PicassoWidgetHandler.php#L169-L196)
+See the source code for method [PicassoWidgetHandler::process](https://github.com/lingtalfi/Kit_PicassoWidget/blob/master/WidgetHandler/PicassoWidgetHandler.php#L163-L186)
 
 
 See Also

@@ -173,15 +173,16 @@ The widget brain (aka brain) is a php file called before the widget is rendered.
 It's basically our implementation of the **process phase** described in the [kit widgets rendering section](https://github.com/lingtalfi/Kit/blob/master/doc/pages/conception-notes.md#rendering-a-widget).
 
 
+It's just a php file in which you have access to the **$vars** variable, which represents the widget variables (the **vars** part of the widget conf array).
+
+You can update this array directly to prepare your widget for rendering.
+
 The **brain** is called by the widget handler instance.
 
-In other words, the **$this** keyword in your brain file gives you access to the methods of the widget handler, which has the following useful methods:
+In other words, the **$this** variable is also available, which might be useful in some cases.
 
-- registerWidgetVar( string key, mixed value ): to register a variable which will be available to the template
-
-
-If you're using the [Light framework](https://github.com/lingtalfi/Light), then you probably are using the [Light_Kit](https://github.com/lingtalfi/Light_Kit) version of kit.
-In this case, the widget handler is the **LightKitPicassoWidgetHandler** instance (by default), and it gives you some additional methods:
+For instance, if you're using the [Light framework](https://github.com/lingtalfi/Light), then you probably are using the [Light_Kit](https://github.com/lingtalfi/Light_Kit) version of kit.
+In this case, the widget handler is the **LightKitPicassoWidgetHandler** instance (by default), which gives you (at least) the following method:
 
 - getContainer(): to access the service container
 

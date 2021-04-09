@@ -54,6 +54,10 @@ Related
 History Log
 =============
 
+- 1.30.7 -- 2021-04-09
+
+    - update brain, $vars is now accessible instead of registerWidgetVar 
+  
 - 1.30.6 -- 2021-04-09
 
     - add widget brain implementation 

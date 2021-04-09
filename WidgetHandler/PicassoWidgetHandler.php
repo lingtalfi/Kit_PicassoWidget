@@ -9,6 +9,8 @@ use Ling\Kit\PageRenderer\KitPageRendererInterface;
 use Ling\Kit\WidgetHandler\WidgetHandlerInterface;
 use Ling\Kit_PicassoWidget\Exception\PicassoWidgetException;
 use Ling\Kit_PicassoWidget\Widget\PicassoWidget;
+use Ling\Light_Kit\ConfigurationTransformer\ConfigurationTransformerInterface;
+use Ling\Light_Kit\ConfigurationTransformer\PageConfigurationTransformerInterface;
 
 
 /**
@@ -123,13 +125,6 @@ class PicassoWidgetHandler implements WidgetHandlerInterface, KitPageRendererAwa
 
 
     /**
-     * This property holds the brainVars for this instance.
-     * @var array
-     */
-    private array $brainVars;
-
-
-    /**
      * Builds the PicassoWidgetHandler instance.
      * @param array $options
      */
@@ -139,7 +134,6 @@ class PicassoWidgetHandler implements WidgetHandlerInterface, KitPageRendererAwa
         $this->showCssNuggetHeaders = $options['showCssNuggetHeaders'] ?? false;
         $this->showJsNuggetHeaders = $options['showJsNuggetHeaders'] ?? false;
         $this->kitPageRenderer = null;
-        $this->brainVars = [];
     }
 
 
@@ -176,13 +170,9 @@ class PicassoWidgetHandler implements WidgetHandlerInterface, KitPageRendererAwa
                 $widgetDir = $this->getWidgetDir($widgetConf, $class);
                 $brainFile = $widgetDir . "/brain/brain.php";
                 if (true === file_exists($brainFile)) {
-                    $this->brainVars = [];
-                    $this->processBrainFile($brainFile);
-
-                    foreach ($this->brainVars as $k => $v) {
-                        $widgetConf['vars'][$k] = $v;
-                    }
-
+                    $vars = $widgetConf['vars'] ?? [];
+                    $this->processBrainFile($brainFile, $vars);
+                    $widgetConf['vars'] = $vars;
                 }
 
 
@@ -371,18 +361,6 @@ class PicassoWidgetHandler implements WidgetHandlerInterface, KitPageRendererAwa
 
 
 
-    /**
-     * Method for the brain file to register a widget variable (which will be available to the template).
-     *
-     * @param string $key
-     * @param mixed $value
-     */
-    protected function registerWidgetVar(string $key, mixed $value): void
-    {
-        $this->brainVars[$key] = $value;
-    }
-
-
 
     //--------------------------------------------
     //
@@ -411,18 +389,16 @@ class PicassoWidgetHandler implements WidgetHandlerInterface, KitPageRendererAwa
     }
 
 
-
-
-
     /**
      * Process the brain file.
-     * Note: we isolate it in its own function, because we don't want the file to access widgetConf directly (from the process method).
      *
-     * Instead, the brain file should register variables via our registerWidgetVar method.
+     * Note: The brain file can access the widget variables via **$vars**, and the current instance via **$this**.
+     *
      *
      * @param string $file
+     * @param array $vars
      */
-    private function processBrainFile(string $file)
+    private function processBrainFile(string $file, array &$vars)
     {
         require_once $file;
     }
