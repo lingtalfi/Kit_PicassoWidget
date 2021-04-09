@@ -73,7 +73,7 @@ Exceptions thrown
 
 Source Code
 ===========
-See the source code for method [PicassoWidgetHandler::render](https://github.com/lingtalfi/Kit_PicassoWidget/blob/master/WidgetHandler/PicassoWidgetHandler.php#L189-L337)
+See the source code for method [PicassoWidgetHandler::render](https://github.com/lingtalfi/Kit_PicassoWidget/blob/master/WidgetHandler/PicassoWidgetHandler.php#L202-L350)
 
 
 See Also

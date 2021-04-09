@@ -123,6 +123,13 @@ class PicassoWidgetHandler implements WidgetHandlerInterface, KitPageRendererAwa
 
 
     /**
+     * This property holds the brainVars for this instance.
+     * @var array
+     */
+    private array $brainVars;
+
+
+    /**
      * Builds the PicassoWidgetHandler instance.
      * @param array $options
      */
@@ -132,6 +139,7 @@ class PicassoWidgetHandler implements WidgetHandlerInterface, KitPageRendererAwa
         $this->showCssNuggetHeaders = $options['showCssNuggetHeaders'] ?? false;
         $this->showJsNuggetHeaders = $options['showJsNuggetHeaders'] ?? false;
         $this->kitPageRenderer = null;
+        $this->brainVars = [];
     }
 
 
@@ -161,15 +169,20 @@ class PicassoWidgetHandler implements WidgetHandlerInterface, KitPageRendererAwa
     public function process(array &$widgetConf, array $debug): void
     {
         if (array_key_exists("className", $widgetConf)) {
-
             $className = $widgetConf['className'];
 
             try {
                 $class = new \ReflectionClass($className);
                 $widgetDir = $this->getWidgetDir($widgetConf, $class);
                 $brainFile = $widgetDir . "/brain/brain.php";
-                if(true === file_exists($brainFile)){
-                    require_once $brainFile;
+                if (true === file_exists($brainFile)) {
+                    $this->brainVars = [];
+                    $this->processBrainFile($brainFile);
+
+                    foreach ($this->brainVars as $k => $v) {
+                        $widgetConf['vars'][$k] = $v;
+                    }
+
                 }
 
 
@@ -357,6 +370,20 @@ class PicassoWidgetHandler implements WidgetHandlerInterface, KitPageRendererAwa
     }
 
 
+
+    /**
+     * Method for the brain file to register a widget variable (which will be available to the template).
+     *
+     * @param string $key
+     * @param mixed $value
+     */
+    protected function registerWidgetVar(string $key, mixed $value): void
+    {
+        $this->brainVars[$key] = $value;
+    }
+
+
+
     //--------------------------------------------
     //
     //--------------------------------------------
@@ -381,5 +408,22 @@ class PicassoWidgetHandler implements WidgetHandlerInterface, KitPageRendererAwa
             $widgetDir = $dir . "/widget";
         }
         return $widgetDir;
+    }
+
+
+
+
+
+    /**
+     * Process the brain file.
+     * Note: we isolate it in its own function, because we don't want the file to access widgetConf directly (from the process method).
+     *
+     * Instead, the brain file should register variables via our registerWidgetVar method.
+     *
+     * @param string $file
+     */
+    private function processBrainFile(string $file)
+    {
+        require_once $file;
     }
 }

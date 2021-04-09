@@ -1,6 +1,6 @@
 Conception notes 
 ========
-2019-04-24 -> 2021-04-08
+2019-04-24 -> 2021-04-09
 
 
 
@@ -8,6 +8,7 @@ Conception notes
 * [Intro](#intro)
 * [The Picasso widget array](#the-picasso-widget-array)
 * [Going deeper with widgets: the picasso widget](#going-deeper-with-widgets-the-picasso-widget)
+    * [Using the widget brain](#using-the-widget-brain)
     * [Using js files](#using-js-files)
     * [Using css decorator files](#using-css-decorator-files)
 * [Skins](#skins)
@@ -28,8 +29,6 @@ Intro
 
 Picasso is an implementation of the [kit system](https://github.com/lingtalfi/Kit),
 where a widget is encapsulated in a class and a well-defined file structure.
-
-
 
 
 
@@ -151,7 +150,6 @@ Notes:
 - the files contained in the **js-init** directory must have the same name than the template being used (with the **.js** or **.js.php** extension instead). If the **.js.php** extension is used, it's [dynamic nugget](https://github.com/lingtalfi/Kit_PicassoWidget/blob/master/doc/pages/conception-notes.md#dynamic-nuggets).
 - the **css** directory contains any [css code block](https://github.com/lingtalfi/HtmlPageTools/blob/master/doc/api/Ling/HtmlPageTools/Copilot/HtmlPageCopilot.md#property-cssCodeBlocks) that you want to inject in an external css stylesheet.
 - the files contained in the **css** directory must have the same name than the template being used (with the **.css** or **.css.php** extension instead). If the **.css.php** extension is used, it's [dynamic nugget](https://github.com/lingtalfi/Kit_PicassoWidget/blob/master/doc/pages/conception-notes.md#dynamic-nuggets).
-- the brain concept is experimental for now, we need more concrete cases to know whether this is useful or impractical
 
 
 
@@ -162,6 +160,47 @@ So the main ideas here are:
 - the use of templates
 - the use of js files
 - the use of css decorator files
+
+
+
+
+### Using the widget brain
+2021-04-09
+
+
+The widget brain (aka brain) is a php file called before the widget is rendered.
+
+It's basically our implementation of the **process phase** described in the [kit widgets rendering section](https://github.com/lingtalfi/Kit/blob/master/doc/pages/conception-notes.md#rendering-a-widget).
+
+
+The **brain** is called by the widget handler instance.
+
+In other words, the **$this** keyword in your brain file gives you access to the methods of the widget handler, which has the following useful methods:
+
+- registerWidgetVar( string key, mixed value ): to register a variable which will be available to the template
+
+
+If you're using the [Light framework](https://github.com/lingtalfi/Light), then you probably are using the [Light_Kit](https://github.com/lingtalfi/Light_Kit) version of kit.
+In this case, the widget handler is the **LightKitPicassoWidgetHandler** instance (by default), and it gives you some additional methods:
+
+- getContainer(): to access the service container
+
+Tip: if you are using the **light framework** and have an IDE with autocompletion, like phpStorm for instance, we recommend using a snippet like this at the top of your **brain file**:
+
+
+```php 
+/**
+ * @var $this LightKitPicassoWidgetHandler
+ */
+ 
+```
+
+This will provide you autocompletion for the **$this** variable in the rest of the brain file.
+
+
+
+
+
 
 
 
@@ -208,6 +247,9 @@ With this technique, your css code is nicely separated from the html code.
 
 Now if you need to leverage the power of php in your css nuggets, add the **.php** extension.
 This will turn your file into a [dynamic nugget](#dynamic-nuggets).
+
+
+
 
 
 

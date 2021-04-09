@@ -1,6 +1,6 @@
 Kit_PicassoWidget
 ===========
-2019-04-24 -> 2021-04-08
+2019-04-24 -> 2021-04-09
 
 
 
@@ -54,6 +54,10 @@ Related
 History Log
 =============
 
+- 1.30.6 -- 2021-04-09
+
+    - add widget brain implementation 
+  
 - 1.30.5 -- 2021-04-08
 
     - adapt to Kit:1.14.0
