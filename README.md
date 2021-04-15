@@ -1,6 +1,6 @@
 Kit_PicassoWidget
 ===========
-2019-04-24 -> 2021-04-09
+2019-04-24 -> 2021-04-15
 
 
 
@@ -54,6 +54,10 @@ Related
 History Log
 =============
 
+- 1.30.8 -- 2021-04-15
+
+    - fix VariableDescriptionFileGeneratorUtil->generate assuming that zone is always array 
+  
 - 1.30.7 -- 2021-04-09
 
     - update brain, $vars is now accessible instead of registerWidgetVar 
